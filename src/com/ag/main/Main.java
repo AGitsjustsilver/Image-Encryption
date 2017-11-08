@@ -9,13 +9,9 @@ import com.ag.brain.*;
 
 public class Main extends Application {
 	public void start(Stage pStage){
-
-		Group g = new Group();
-
-		Scene s = new Scene(g, 500,500);
-
+		Scene s = new Scene(new UserInterface(pStage), 800,1000);
 		pStage.setScene(s);
-		pStage.setTitle("Image test class");
+		pStage.setTitle("Image Encryption");
 		pStage.show();
 	}
 
