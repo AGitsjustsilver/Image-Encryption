@@ -14,6 +14,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
 public class AppMenu extends MenuBar{
+
+	
 	
 	public AppMenu(Stage s){
 		this.setWidth(ImgEnConstants.WIDTH);

@@ -1,4 +1,4 @@
-package com.ag.brain.ui;
+package com.ag.brain.ui.output;
 
 import javafx.scene.layout.GridPane;
 

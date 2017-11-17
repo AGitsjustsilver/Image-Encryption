@@ -1,4 +1,4 @@
-package com.ag.brain.ui;
+package com.ag.brain.ui.input;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
