@@ -1,14 +1,12 @@
 package com.ag.main;
 
-import com.ag.brain.ImgEnConstants;
-import com.ag.brain.ui.UserInterface;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 
-import com.ag.brain.*;
+import src.com.ag.brain.ImgEnConstants;
+import src.com.ag.brain.ui.UserInterface;
 
 public class Main extends Application {
 	public void start(Stage pStage){

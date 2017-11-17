@@ -3,6 +3,10 @@ package com.ag.brain;
 import javafx.scene.paint.Color;
 
 public class Pixel{
+
+	private WritableImage img;
+	private PixelWriter writer;
+
 	private int x;
 	private int y;
 	private Color c;
@@ -15,6 +19,7 @@ public class Pixel{
 		this.x = x;
 		this.y = y;
 		this.c = c;
+		
 	}
 
 	public Pixel(int x, int y, double r, double g, double b){
