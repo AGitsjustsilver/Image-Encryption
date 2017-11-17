@@ -5,8 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 
-import src.com.ag.brain.ImgEnConstants;
-import src.com.ag.brain.ui.UserInterface;
+import com.ag.brain.ImgEnConstants;
+import com.ag.brain.ui.UserInterface;
 
 public class Main extends Application {
 	public void start(Stage pStage){
