@@ -5,6 +5,7 @@ import com.ag.brain.ui.input.TextInput;
 import com.ag.brain.ui.menu.AppMenu;
 import com.ag.brain.ui.output.ImageOutput;
 
+import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
@@ -19,9 +20,12 @@ public class UserInterface extends BorderPane{
 
 	public UserInterface(Stage s){
 		menu = new AppMenu(s);
-		//default IO
+		g = new GridPane();
+		g.setAlignment(Pos.CENTER);
 		topNode = new TextInput();
 		botNode = new ImageOutput();
+		g.add(topNode, 0, 0);
+		g.add(botNode, 0, 1);
 
 		super.setCenter(getG());
 		super.setTop(menu);
@@ -41,6 +45,7 @@ public class UserInterface extends BorderPane{
 
 	public static void setTopNode(Node t){
 		topNode = t;
+		getG().add(t,0,0);
 	}
 
 	public static void setBotNode(Node b){

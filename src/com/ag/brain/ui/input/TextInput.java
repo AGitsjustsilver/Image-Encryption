@@ -9,6 +9,7 @@ public class TextInput extends GridPane{
 	public TextInput(){
 		TextArea t = new TextArea("Message to decrypt");
 		this.setConstraints(t, 0,0, 3, 2);
+		this.add(t, 0, 0);
 
 		Button b = new Button("Encrypt");
 			b.setOnMouseClicked(event -> {
