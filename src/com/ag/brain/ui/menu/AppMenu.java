@@ -1,6 +1,6 @@
 package com.ag.brain.ui.menu;
 
-import com.ag.brain.ImgEnConstants;
+import com.ag.brain.IEUtils;
 import com.ag.brain.ui.UserInterface;
 import com.ag.brain.ui.input.TextInput;
 import com.ag.brain.ui.input.ImageInput;
@@ -18,7 +18,7 @@ public class AppMenu extends MenuBar{
 	
 	
 	public AppMenu(Stage s){
-		this.setWidth(ImgEnConstants.WIDTH);
+		this.setWidth(IEUtils.WIDTH);
 		Menu file = new Menu("File");
 			MenuItem settings = new MenuItem("Settings");
 
