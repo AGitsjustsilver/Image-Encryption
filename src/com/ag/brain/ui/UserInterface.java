@@ -2,6 +2,7 @@ package com.ag.brain.ui;
 
 import com.ag.brain.ImgEnConstants;
 import com.ag.brain.ui.input.TextInput;
+import com.ag.brain.ui.input.ImageInput;
 import com.ag.brain.ui.menu.AppMenu;
 import com.ag.brain.ui.output.ImageOutput;
 
@@ -22,7 +23,7 @@ public class UserInterface extends BorderPane{
 		menu = new AppMenu(s);
 		g = new GridPane();
 		g.setAlignment(Pos.CENTER);
-		topNode = new TextInput();
+		topNode = new ImageInput();
 		botNode = new ImageOutput();
 		g.add(topNode, 0, 0);
 		g.add(botNode, 0, 1);
@@ -45,7 +46,6 @@ public class UserInterface extends BorderPane{
 
 	public static void setTopNode(Node t){
 		topNode = t;
-		getG().add(t,0,0);
 	}
 
 	public static void setBotNode(Node b){
