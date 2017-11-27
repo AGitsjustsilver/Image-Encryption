@@ -23,7 +23,7 @@ public class UserInterface extends BorderPane{
 		menu = new AppMenu(s);
 		g = new GridPane();
 		g.setAlignment(Pos.CENTER);
-		this.setTopNode(new ImageInput());
+		this.setTopNode(new TextInput());
 		this.setBotNode(new ImageOutput());
 
 		super.setCenter(getG());
