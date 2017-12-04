@@ -20,27 +20,26 @@ public class TextInput extends GridPane{
 	public TextInput(){
 		this.setVgap(5.0);
 		this.setHgap(5.0);
-		this.setGridLinesVisible(true);
+		// this.setGridLinesVisible(true);
 
 		TextField fileName = new TextField();
 			fileName.setPromptText("File name here");
+		this.setHalignment(fileName, HPos.LEFT);
 		this.setColumnSpan(fileName, 2);
-		this.add(fileName, 0, 0);
 
 		ComboBox<String> fileExtention = new ComboBox<String>();
 			fileExtention.getItems().addAll(".png", ".jpg", ".gif", ".bmp");
 			fileExtention.setValue(".png");
-		this.setHalignment(fileExtention, HPos.RIGHT); 
 		this.add(fileExtention, 2, 0);
 
 		TextArea t = new TextArea();
 			t.setPromptText("Message to decrypt");
-		this.setColumnSpan(t,3);
-		this.add(t, 0, 1);
+		this.setColumnSpan(t,2);
 
 		Text warn = new Text();
 			warn.setFill(Color.RED);
-		this.add(warn, 2,2);
+		this.setHalignment(warn, HPos.CENTER);
+		this.add(warn, 1,2);
 
 		Button b1 = new Button("Encrypt");
 			b1.setOnMouseClicked(event -> {
@@ -51,7 +50,8 @@ public class TextInput extends GridPane{
 					warn.setText("");
 				}
 			}); 
-		this.add(b1, 0, 2);
+
+		this.addColumn(0, fileName, t, b1);
 
 	}
 
