@@ -32,9 +32,9 @@ public class TextInput extends GridPane{
 			fileExtention.setValue(".png");
 		this.add(fileExtention, 2, 0);
 
-		TextArea t = new TextArea();
-			t.setPromptText("Message to decrypt");
-		this.setColumnSpan(t,2);
+		TextArea input = new TextArea();
+			input.setPromptText("Message to decrypt");
+		this.setColumnSpan(input,2);
 
 		Text warn = new Text();
 			warn.setFill(Color.RED);
@@ -43,15 +43,16 @@ public class TextInput extends GridPane{
 
 		Button b1 = new Button("Encrypt");
 			b1.setOnMouseClicked(event -> {
-				if((fileName.getText().isEmpty())||(t.getText().isEmpty())){
+				if((fileName.getText().isEmpty())||(input.getText().isEmpty())){
 					warn.setText("Missing fields.");
 				}else{
 					// functionality goes here
-					warn.setText("");
+
+					warn.setText("");//last operation
 				}
 			}); 
 
-		this.addColumn(0, fileName, t, b1);
+		this.addColumn(0, fileName, input, b1);
 
 	}
 

@@ -1,5 +1,6 @@
 package com.ag.brain.image;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 
 /**
@@ -11,12 +12,18 @@ import javafx.scene.image.WritableImage;
 public class ImageFactory{
 
 	private WritableImage imageRes;
+	private PixelWriter pWrite;
 
 
 	public ImageFactory(){
-		
+		imageRes = new WritableImage();
+		pWrite = imageRes.getPixelWriter();
 	}
 
+
+	public static Image getFinalImage(){
+		return imageRes;
+	}
 
 
 }

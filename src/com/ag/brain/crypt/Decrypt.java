@@ -1,5 +1,5 @@
 package com.ag.brain.crypt;
 
-public class Decrypt{
+public class Decrypt extends Crypt{
 	
 }

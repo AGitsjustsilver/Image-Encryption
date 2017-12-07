@@ -28,8 +28,8 @@ public class TestMain extends Application{
 		Button b = new Button("Do The Thing");
 			b.setOnMouseClicked(event -> {
 				val = new Integer(t.getText());
-				shift();
-				res.setText("The original was " + val + "\n" + "The new value is " + val.toString());
+				int val2 = val>>1;
+				res.setText("The original was " + val + "\n" + "The new value is " + val2);
 			});
 		g.add(b, 0, 2);
 
