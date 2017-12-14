@@ -1,5 +1,7 @@
 package com.ag.brain.ui.input;
 
+import com.ag.brain.crypt.Encrypt;
+
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -43,7 +45,7 @@ public class TextInput extends GridPane{
 
 		Button b1 = new Button("Encrypt");
 			b1.setOnMouseClicked(event -> {
-				if((fileName.getText().isEmpty())||(input.getText().isEmpty())){
+				if((fileName.getText().trim().isEmpty())||(input.getText().isEmpty())){
 					warn.setText("Missing fields.");
 				}else{
 					// functionality goes here

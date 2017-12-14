@@ -1,6 +1,7 @@
 package com.ag.brain.ui.input;
 
 import com.ag.brain.IEUtils;
+import com.ag.brain.crypt.Encrypt;
 
 import java.io.File;
 

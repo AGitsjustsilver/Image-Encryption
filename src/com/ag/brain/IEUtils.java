@@ -17,6 +17,8 @@ public class IEUtils{
 	private static final double ERROR_WIDTH = 400;
 	private static final double ERROR_HEIGHT  = 100;
 
+	public static final String OUT_PATH = "";
+
 	public static void errorDisplay(String message){
 		Stage p = new Stage();
 

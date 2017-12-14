@@ -70,15 +70,14 @@ public class TestMain /*extends Application*/{
 		s.close();
 	}*/
 
-	private static String s;
 
 	public static void main(String [] args){
 		//launch(args);
-		s = null;
-		// System.out.println(s.length());
-		System.out.println(s.isEmpty());
-		s = "";
-		System.out.println(s.length());
-		System.out.println(s.isEmpty());
+		System.out.println(0/2);
+		System.out.println(1/2);
+		System.out.println(2/2);
+		System.out.println(3/2);
+		System.out.println(4/2);
+		System.out.println(5/2);
 	}
 }
