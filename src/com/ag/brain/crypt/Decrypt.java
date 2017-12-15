@@ -26,7 +26,7 @@ public class Decrypt extends Crypt{
 	public void read(){
 		for (int row = 0;row < pic.length ; row++) {
 			for (int col = 0;col < pic[row].length ; col++) {
-				pic[row][col] = getPR().getColor(row, col);
+				pic[row][col] = pR.getColor(row, col);
 			}			
 		}
 	}

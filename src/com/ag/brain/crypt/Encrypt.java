@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 public class Encrypt extends Crypt{
@@ -77,28 +78,45 @@ public class Encrypt extends Crypt{
 	}
 
 	public void create(){
-		int[][][] colorVal = new int[getLength().intValue()][getWidth().intValue()][3];
-		for (int i = 0; i < getMetaShift().length; i++){
-			colorVal[0][i/3][i%3] = metaShift[i];
-		}
+		super.setAllBlank();
+		int[] t = getMetaShift();
+		pic[0][0] = Color.rgb(t[0], t[1], t[2]);
+		pic[0][1] = Color.rgb(t[3], t[4], t[5]);
 		int row = 0, col = 2, i = 0;
 		String[] words = getMess().split("\\s"); 
 		for (String s : words) {
 			char[] splitWords = s.toCharArray();
 			for (char c : splitWords) {
+				int[] color = new int[3];
 				int hashVal = Character.hashCode(c);
-				if(row != getLength().intValue()-1){
-					if (col != getWidth().intValue()-1) {
-						if(i != 3){
-							//if it not the last row or column and the hash values are not finished being submitted
+				if((i==3)&&(color[i] != 0)){
+					if(row != getLength().intValue()-1){
+						if (col != getWidth().intValue()-1) {
+							// general cells - the inbetween
+							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
+							col++;
 						}else{
-							//all hash values are set
+							//if it is the last column in the row
+							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
+							col = 0;
+							row++;
 						}
 					}else{
-						//if it is the last column in the row
+						//if it is the last row
+						if (col != getWidth().intValue()-1) {
+							//all cells before the last cell
+							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
+							col++;
+						}else{
+							//the last cell
+							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
+						}
 					}
+					i = 0;
 				}else{
-					//if it is the last row
+					//initializes the array of hash values to put into colors
+					color[i] = hashVal;
+					i++;
 				}
 			}
 		}
@@ -108,8 +126,20 @@ public class Encrypt extends Crypt{
 		return metaShift;
 	}
 
-	// public static Image result(){
+	public void setPixelWriter(WritableImage i){
+		pW = i.getPixelWriter();
+	}
 
-	// }
+	public Image result(){
+		WritableImage i = new WritableImage(getLength().intValue(), getWidth().intValue());
+		setPixelWriter(i);
+		for (int row = 0;row < pic.length; row++) {
+			for (int col = 0;col < pic[row].length;col ++) {
+				pW.setColor(row, col, pic[row][col]);
+			}
+		}
+		Image res = (Image) i;
+		return res;
+	}
 
 }

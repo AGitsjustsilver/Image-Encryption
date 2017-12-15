@@ -28,9 +28,8 @@ public abstract class Crypt{
 
 	private String inMess;
 	private Image inImg;
-	//private ImageFactory iF;// might be temporary 
-	private static PixelWriter pW;
-	private static PixelReader pR;
+	protected static PixelWriter pW;
+	protected static PixelReader pR;
 	private Double l;
 	private Double w;
 	protected static Color[][] pic;
@@ -91,14 +90,6 @@ public abstract class Crypt{
 
 	public Color[][] getPic(){
 		return pic;
-	}
-
-	public PixelReader getPR(){
-		return pR;
-	}
-
-	public PixelWriter getPW(){
-		return pW;
 	}
 
 }
