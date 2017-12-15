@@ -3,15 +3,23 @@ package com.ag.brain;
 import com.ag.brain.ui.input.*;
 import com.ag.brain.ui.output.*;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
+import javafx.stage.Modality;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Modality;
+
+import javax.imageio.ImageIO;
 
 public class IEUtils{
 
@@ -25,7 +33,9 @@ public class IEUtils{
 	public static final ImageOutput imOut = new ImageOutput();
 	public static final TextOutput textOut = new TextOutput();
 
-	public static final String OUT_PATH = "";
+	public static final String OUT_PATH = "C:/Users/alessandro.guaresti9/Desktop";
+	private static String fileType;
+	private static String fileName;
 
 	public static void errorDisplay(String message){
 		Stage p = new Stage();
@@ -70,6 +80,33 @@ public class IEUtils{
 		return -1;
 	}
 
+	public static String getFileType(){
+		return fileType;
+	}
 
+	public static void setFileType(String s){
+		fileType = s;
+	}
+	public static String getFileName(){
+		return fileType;
+	}
+
+	public static void setFileName(String s){
+		fileName = s;
+	}
+
+	public static void saveToFile(Image i){
+		FileChooser fc = new FileChooser();
+		File f = fc.showSaveDialog(null);
+		if(f != null){
+			BufferedImage bImage = SwingFXUtils.fromFXImage(i, null);
+			try{
+				ImageIO.write(bImage, fileType, f);
+			}catch(IOException io){
+				System.out.println(io);
+			}
+		}
+			
+	}
 
 }

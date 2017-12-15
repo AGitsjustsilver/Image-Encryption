@@ -1,5 +1,6 @@
 package com.ag.brain.ui.output;
 
+import com.ag.brain.IEUtils;
 import com.ag.brain.crypt.Encrypt;
 
 import javafx.scene.control.Button;
@@ -16,10 +17,14 @@ public class ImageOutput extends GridPane{
 		viewer = new ImageView();
 		viewer.setFitHeight(300);
 		viewer.setFitWidth(400);
+		viewer.setSmooth(false);
 		this.setColumnSpan(viewer, 2);
 		this.add(viewer, 0, 0);
 
 		Button saveImage = new Button("Download");
+			saveImage.setOnMouseClicked(event -> {
+				IEUtils.saveToFile(viewer.getImage());	
+			});
 		this.add(saveImage, 1, 0);
 	}
 

@@ -22,6 +22,8 @@ public class TextInput extends GridPane{
 	*	area to put message that the user chooses to encrypt
 	**/
 
+	private static Encrypt c;
+
 	public TextInput(){
 		this.setVgap(5.0);
 		this.setHgap(5.0);
@@ -51,7 +53,10 @@ public class TextInput extends GridPane{
 				if((fileName.getText().trim().isEmpty())||(input.getText().isEmpty())){
 					warn.setText("Missing fields.");
 				}else{
-					IEUtils.imOut.setImage(new Encrypt(input.getText()).result());
+					IEUtils.setFileName(fileName.getText());
+					IEUtils.setFileType(fileExtention.getValue());
+					c = new Encrypt(input.getText());
+					IEUtils.imOut.setImage(c.result());
 					warn.setText("");//last operation
 				}
 			}); 
