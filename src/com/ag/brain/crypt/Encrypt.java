@@ -25,6 +25,9 @@ public class Encrypt extends Crypt{
 		if(instuct%2 == 0){
 			shiftCellsLeft(instuct);
 		}
+		if(instuct%5 == 0){
+			shiftCellsDiagonal(instuct);
+		}
 	}
 
 	public void shiftCellsLeft(int shiftCount){
