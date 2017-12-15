@@ -22,8 +22,6 @@ public class TextInput extends GridPane{
 	*	area to put message that the user chooses to encrypt
 	**/
 
-	private Crypt c;
-
 	public TextInput(){
 		this.setVgap(5.0);
 		this.setHgap(5.0);

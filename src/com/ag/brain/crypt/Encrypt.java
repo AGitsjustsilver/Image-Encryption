@@ -18,6 +18,15 @@ public class Encrypt extends Crypt{
 		create();
 	}
 
+	public void shift(int instuct){
+		if(instuct%2 != 0){
+			shiftCellsRight(instuct);
+		}
+		if(instuct%2 == 0){
+			shiftCellsLeft(instuct);
+		}
+	}
+
 	public void shiftCellsLeft(int shiftCount){
 		while(shiftCount != 0){
 			for (int row = 0;row < pic.length; row++) {
@@ -63,6 +72,34 @@ public class Encrypt extends Crypt{
 						// cells that i hope wont cause an out of bounds exception
 						pic[row][col] = pic[row][col+1];
 						pic[row][col+1] = temp; 
+					}
+				}
+			}
+			shiftCount--;
+		}
+	}
+
+	public void shiftCellsDiagonal(int shiftCount){
+		while(shiftCount != 0){
+			for (int row = 0;row < pic.length; row++) {
+				for (int col = 0;col < pic[row].length; col++) {
+					Color temp = pic[row][col];
+					if (row != pic.length-1) {
+						if(col != pic[row].length-1){
+							pic[row][col] = pic[row+1][col+1];
+							pic[row+1][col+1] = temp;
+						}else{
+							pic[row][col] = pic[row+1][0];
+							pic[row+1][0] = temp;
+						}
+					}else{
+						if(col != pic[row].length-1){
+							pic[row][col] = pic[0][col+1];
+							pic[0][col+1] = temp;
+						}else{
+							pic[row][col] = pic[0][0];
+							pic[0][0] = temp;
+						}
 					}
 				}
 			}
@@ -122,6 +159,9 @@ public class Encrypt extends Crypt{
 				}
 			}
 		}
+		for (int a : getMetaShift()) {
+			shift(a);
+		}
 	}
 
 	public int[] getMetaShift(){
@@ -132,7 +172,7 @@ public class Encrypt extends Crypt{
 		pW = i.getPixelWriter();
 	}
 
-	public Image result(){
+	public WritableImage result(){
 		WritableImage i = new WritableImage(getLength().intValue(), getWidth().intValue());
 		setPixelWriter(i);
 		for (int row = 0;row < pic.length; row++) {
@@ -140,8 +180,7 @@ public class Encrypt extends Crypt{
 				pW.setColor(row, col, pic[row][col]);
 			}
 		}
-		Image res = (Image) i;
-		return res;
+		return i;
 	}
 
 }

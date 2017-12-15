@@ -12,7 +12,10 @@ public class ImageOutput extends GridPane{
 	private static ImageView viewer;
 
 	public ImageOutput(){
+		this.setGridLinesVisible(true);
 		viewer = new ImageView();
+		viewer.setFitHeight(300);
+		viewer.setFitWidth(400);
 		this.setColumnSpan(viewer, 2);
 		this.add(viewer, 0, 0);
 
