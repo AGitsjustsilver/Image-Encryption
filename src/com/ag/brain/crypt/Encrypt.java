@@ -79,17 +79,27 @@ public class Encrypt extends Crypt{
 	public void create(){
 		int[][][] colorVal = new int[getLength().intValue()][getWidth().intValue()][3];
 		for (int i = 0; i < getMetaShift().length; i++){
-			if (i < 3) {
-				colorVal[0][i/3][i] = metaShift[i];
-			}else{
-				colorVal[0][i/3][i] = metaShift[i];
-			}
+			colorVal[0][i/3][i%3] = metaShift[i];
 		}
+		int row = 0, col = 2, i = 0;
 		String[] words = getMess().split("\\s"); 
 		for (String s : words) {
 			char[] splitWords = s.toCharArray();
 			for (char c : splitWords) {
-				
+				int hashVal = Character.hashCode(c);
+				if(row != getLength().intValue()-1){
+					if (col != getWidth().intValue()-1) {
+						if(i != 3){
+							//if it not the last row or column and the hash values are not finished being submitted
+						}else{
+							//all hash values are set
+						}
+					}else{
+						//if it is the last column in the row
+					}
+				}else{
+					//if it is the last row
+				}
 			}
 		}
 	}

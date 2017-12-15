@@ -57,10 +57,10 @@ public abstract class Crypt{
 		if(!(inMess.isEmpty())){
 			//4:3 aspect ratio
 			int len = inMess.length();
-			int numOfColors = len / 3;
+			int numOfColors = (len / 3)+2;//2 colors from the meta data
 			int numOfUnpaired = len % 3;
-			w = new Double(Math.floor((numOfColors+((numOfUnpaired%3 != 0)? 1:0))/(4/3.0))+1);
-			l = new Double(Math.floor((4/3.0) * w)+1);
+			l = new Double(Math.floor((numOfColors+((numOfUnpaired%3!=0)? 1:0))/(4/3.0))+1);
+			w = new Double(Math.floor((4/3.0) * l)+1);
 			pic = new Color[l.intValue()][w.intValue()];
 		}else{ // image
 			w = inImg.getWidth();

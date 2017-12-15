@@ -1,6 +1,9 @@
 package com.ag.main;
 
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.TreeMap;
+import java.util.SortedMap;
 
 /*import javafx.application.Application;
 import javafx.scene.Scene;
@@ -11,6 +14,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;*/
 
 public class TestMain /*extends Application*/{
+
+	public static void main(String [] args){
+		//launch(args);
+		String test = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890-=!@#$%^&*()_+\\,./<>?;':\"{}[] ";
+		// System.out.println(test.hashCode());
+		/*char[] t = test.toCharArray();
+		for (char i : t) {
+			System.out.print(i + ": ");
+			System.out.println( Character.hashCode(i) + ", ");
+		}*/
+		aspectTesting();
+	}
 
     /*private int[][] arrayValues;
 	private GridPane g;
@@ -44,40 +59,38 @@ public class TestMain /*extends Application*/{
 		nVal = new Integer(val<<3);
 	}*/
 
-	/*public void aspectTesting(){
-		Scanner s = new Scanner(System.in);
+	public static void aspectTesting(){
+/*		Scanner s = new Scanner(System.in);
 		boolean f = true;
 		while(f){
 			int in = s.nextInt();
 			if(in == -1){
 				f = false;
-			}else{
-				int completeColors = in/3;
-				int unPairedColors = in%3;
-				double area = Math.floor(in/3.0);
-				// for a 1:1 aspect ratio
-				double lw = Math.floor(Math.sqrt(area));
-				double emptyPix11 = ((lw+1) * (lw+1)) - (completeColors+1);
-				// for a 4:3 aspect ratio
-				double w = Math.floor(Math.sqrt(area / (4/3.0)))+1;
-				double l = Math.floor((4/3.0) * w)+1;
-				double emptyPix43 = (l * w) - (completeColors+1);
-				System.out.println("There would be " + completeColors + " Complete Colors and " + unPairedColors + " unpaired Colors in " + in + " Characters.");
-				System.out.println("For a 1:1 Aspect Ratio the length and width would be " + lw + " pixels.\nWe would have to create " + emptyPix11 + " empty pixels.");
-				System.out.println("For a 4:3 Aspect Ratio the width would be " + l + " pixels and the height would be " + w + "pixels.\nWe would have to create " +emptyPix43 + " empty pixels.");
-			}
+			}else{*/
+		int[] test = new int[50];
+		for (int i = 0; i < test.length; i++){
+			test[i] = 3*(i+1);
 		}
-		s.close();
-	}*/
-
-
-	public static void main(String [] args){
-		//launch(args);
-		System.out.println(0/2);
-		System.out.println(1/2);
-		System.out.println(2/2);
-		System.out.println(3/2);
-		System.out.println(4/2);
-		System.out.println(5/2);
+		for (int i : test) {
+			int completeColors = (i/3)+2;
+			int unPairedColors = i%3;
+			// for a 4:3 aspect ratio
+			double row = Math.floor(Math.sqrt((completeColors+((unPairedColors%3!=0)? 1:0))/(4/3.0)))+1;
+			double col = Math.floor((4/3.0) * row)+1;
+			double totalPix = row*col;
+			double emptyPix43 = totalPix - (completeColors+((unPairedColors%3!=0)? 1:0));
+			System.out.println("Number of Characters\tTotal Pixels\tColumn Pixels\tRow Pixels\tEmpty Pixels");
+			System.out.printf("%d\t\t\t%.0f\t\t%.0f\t\t%.0f\t\t%.0f\n\n", i, totalPix, col, row, emptyPix43);
+		}
+/*			}
+		}
+		s.close();*/
+/*
+			int len = inMess.length();
+			int numOfColors = len / 3;
+			int numOfUnpaired = len % 3;
+			w = new Double(Math.floor((numOfColors+((numOfUnpaired%3 != 0)? 1:0))/(4/3.0))+1);
+			l = new Double(Math.floor((4/3.0) * w)+1);*/
 	}
+
 }
