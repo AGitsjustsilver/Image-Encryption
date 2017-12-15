@@ -25,7 +25,7 @@ public class ImageOutput extends GridPane{
 			saveImage.setOnMouseClicked(event -> {
 				IEUtils.saveToFile(viewer.getImage());	
 			});
-		this.add(saveImage, 1, 0);
+		this.add(saveImage, 0, 1);
 	}
 
 	public static void setImage(Image i){
