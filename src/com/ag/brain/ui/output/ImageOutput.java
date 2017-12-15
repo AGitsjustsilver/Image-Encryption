@@ -1,5 +1,7 @@
 package com.ag.brain.ui.output;
 
+import com.ag.brain.crypt.Encrypt;
+
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

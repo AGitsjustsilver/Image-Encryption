@@ -116,7 +116,9 @@ public class Encrypt extends Crypt{
 				}else{
 					//initializes the array of hash values to put into colors
 					color[i] = hashVal;
-					i++;
+					if(i != 2 && i < 3){
+						i++;
+					}
 				}
 			}
 		}

@@ -1,5 +1,7 @@
 package com.ag.brain.ui.input;
 
+import com.ag.brain.IEUtils;
+import com.ag.brain.crypt.Crypt;
 import com.ag.brain.crypt.Encrypt;
 
 import javafx.geometry.HPos;
@@ -19,6 +21,9 @@ public class TextInput extends GridPane{
 	*	area to choose file extention png, jpg, gif, or bmp
 	*	area to put message that the user chooses to encrypt
 	**/
+
+	private Crypt c;
+
 	public TextInput(){
 		this.setVgap(5.0);
 		this.setHgap(5.0);
@@ -48,8 +53,7 @@ public class TextInput extends GridPane{
 				if((fileName.getText().trim().isEmpty())||(input.getText().isEmpty())){
 					warn.setText("Missing fields.");
 				}else{
-					// functionality goes here
-
+					IEUtils.imOut.setImage(new Encrypt(input.getText()).result());
 					warn.setText("");//last operation
 				}
 			}); 

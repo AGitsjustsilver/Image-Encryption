@@ -1,5 +1,8 @@
 package com.ag.brain;
 
+import com.ag.brain.ui.input.*;
+import com.ag.brain.ui.output.*;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -16,6 +19,11 @@ public class IEUtils{
 	public static final double HEIGHT = 800;
 	private static final double ERROR_WIDTH = 400;
 	private static final double ERROR_HEIGHT  = 100;
+
+	public static final ImageInput imIn = new ImageInput();
+	public static final TextInput textIn = new TextInput();
+	public static final ImageOutput imOut = new ImageOutput();
+	public static final TextOutput textOut = new TextOutput();
 
 	public static final String OUT_PATH = "";
 

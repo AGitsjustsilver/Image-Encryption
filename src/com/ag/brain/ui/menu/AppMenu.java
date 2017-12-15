@@ -2,9 +2,6 @@ package com.ag.brain.ui.menu;
 
 import com.ag.brain.IEUtils;
 import com.ag.brain.ui.UserInterface;
-import com.ag.brain.ui.input.TextInput;
-import com.ag.brain.ui.input.ImageInput;
-import com.ag.brain.ui.output.ImageOutput;
 
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
@@ -33,12 +30,12 @@ public class AppMenu extends MenuBar{
 		Menu in = new Menu("Input");
 			MenuItem text = new MenuItem("Text");
 				text.setOnAction(event -> {
-					UserInterface.setTopNode(new TextInput());
+					UserInterface.setTopNode(IEUtils.textIn);
 				});
 
 			MenuItem img = new MenuItem("Image");
 				img.setOnAction(event ->{
-					UserInterface.setTopNode(new ImageInput());
+					UserInterface.setTopNode(IEUtils.imIn);
 				});
 
 		in.getItems().addAll(text, img);
@@ -46,7 +43,7 @@ public class AppMenu extends MenuBar{
 		Menu out = new Menu("Output");
 			MenuItem imgO = new MenuItem("Image");
 				imgO.setOnAction(event -> {
-					UserInterface.setBotNode(new ImageOutput());
+					UserInterface.setBotNode(IEUtils.imOut);
 				});
 
 		out.getItems().add(imgO);

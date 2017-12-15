@@ -1,10 +1,7 @@
 package com.ag.brain.ui;
 
 import com.ag.brain.IEUtils;
-import com.ag.brain.ui.input.TextInput;
-import com.ag.brain.ui.input.ImageInput;
 import com.ag.brain.ui.menu.AppMenu;
-import com.ag.brain.ui.output.ImageOutput;
 
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -24,8 +21,8 @@ public class UserInterface extends BorderPane{
 		g = new GridPane();
 		g.setAlignment(Pos.CENTER);
 		// this.setTopNode(new TextInput());
-		this.setTopNode(new ImageInput());
-		this.setBotNode(new ImageOutput());
+		this.setTopNode(IEUtils.textIn);
+		this.setBotNode(IEUtils.imOut);
 
 		super.setCenter(getG());
 		super.setTop(menu);
