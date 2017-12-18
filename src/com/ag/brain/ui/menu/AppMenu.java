@@ -30,12 +30,17 @@ public class AppMenu extends MenuBar{
 		Menu in = new Menu("Input");
 			MenuItem text = new MenuItem("Text");
 				text.setOnAction(event -> {
+					IEUtils.textIn.setVisible(true);
 					UserInterface.setTopNode(IEUtils.textIn);
+					IEUtils.imIn.setVisible(false);
 				});
 
 			MenuItem img = new MenuItem("Image");
 				img.setOnAction(event ->{
+					IEUtils.imIn.setVisible(true);
 					UserInterface.setTopNode(IEUtils.imIn);
+					IEUtils.textIn.setVisible(false);
+
 				});
 
 		in.getItems().addAll(text, img);

@@ -41,11 +41,13 @@ public class UserInterface extends BorderPane{
 	}
 
 	public static void setTopNode(Node t){
+		g.getChildren().removeAll(topNode);
 		topNode = t;
 		g.add(topNode, 0, 0);
 	}
 
 	public static void setBotNode(Node b){
+		g.getChildren().removeAll(botNode);		
 		botNode = b;
 		g.add(botNode, 0, 1);
 	}
