@@ -35,8 +35,8 @@ public class TextInput extends GridPane{
 		this.setColumnSpan(fileName, 2);
 
 		ComboBox<String> fileExtention = new ComboBox<String>();
-			fileExtention.getItems().addAll(".png", ".jpg", ".gif", ".bmp");
-			fileExtention.setValue(".png");
+			fileExtention.getItems().addAll("png", "jpg", "gif", "bmp");
+			fileExtention.setValue("png");
 		this.add(fileExtention, 2, 0);
 
 		TextArea input = new TextArea();
@@ -50,12 +50,13 @@ public class TextInput extends GridPane{
 
 		Button b1 = new Button("Encrypt");
 			b1.setOnMouseClicked(event -> {
-				if((fileName.getText().trim().isEmpty())||(input.getText().isEmpty())){
+				if((fileName.getText().isEmpty())||(input.getText().isEmpty())){
 					warn.setText("Missing fields.");
 				}else{
 					IEUtils.setFileName(fileName.getText());
 					IEUtils.setFileType(fileExtention.getValue());
-					c = new Encrypt(input.getText());
+					String mess = input.getText();
+					c = new Encrypt(mess);
 					IEUtils.imOut.setImage(c.result());
 					warn.setText("");//last operation
 				}

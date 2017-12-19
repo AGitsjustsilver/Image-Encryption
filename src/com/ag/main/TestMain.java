@@ -12,19 +12,27 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;*/
+import javafx.scene.paint.Color;
 
 public class TestMain /*extends Application*/{
 
 	public static void main(String [] args){
 		//launch(args);
-		String test = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890-=!@#$%^&*()_+\\,./<>?;':\"{}[] ";
+		// String test = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890-=!@#$%^&*()_+\\,./<>?;':\"{}[] ";
+		String test = "The quick brown fox jumps over the lazy dog";
+		System.out.println("total length: "+test.length());
 		// System.out.println(test.hashCode());
-		/*char[] t = test.toCharArray();
-		for (char i : t) {
-			System.out.print(i + ": ");
-			System.out.println( Character.hashCode(i) + ", ");
-		}*/
-		aspectTesting();
+		// String[] test1 = test.split(" ");
+		// for (String a : test1) {
+		// 	char[] t = a.toCharArray();
+		// 	for (char b : t) {
+		// 		System.out.print(b + ": ");
+		// 		System.out.println( Character.hashCode(b) + ", ");	
+		// 	}
+		// 	System.out.println();
+		// }
+		Color t = Color.web("000000");
+		// aspectTesting();
 	}
 
     /*private int[][] arrayValues;

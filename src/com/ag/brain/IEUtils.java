@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
@@ -33,7 +34,7 @@ public class IEUtils{
 	public static final ImageOutput imOut = new ImageOutput();
 	public static final TextOutput textOut = new TextOutput();
 
-	public static final String OUT_PATH = "C:/Users/alessandro.guaresti9/Desktop";
+	public static final String OUT_PATH = "C:\\Users\\alessandro.guaresti9\\Desktop";
 	private static String fileType;
 	private static String fileName;
 
@@ -97,6 +98,10 @@ public class IEUtils{
 
 	public static void saveToFile(Image i){
 		FileChooser fc = new FileChooser();
+		fc.setInitialDirectory(new File(OUT_PATH));
+		fc.setInitialFileName(fileName);
+		fc.getExtensionFilters().addAll(
+			new ExtensionFilter("Image File", "*.png", "*.jpg", "*.gif", "*.bmp"));
 		File f = fc.showSaveDialog(null);
 		if(f != null){
 			BufferedImage bImage = SwingFXUtils.fromFXImage(i, null);
