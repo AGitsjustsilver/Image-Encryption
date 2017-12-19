@@ -123,21 +123,23 @@ public class Encrypt extends Crypt{
 		pic[0][0] = Color.rgb(t[0], t[1], t[2]);
 		pic[0][1] = Color.rgb(t[3], t[4], t[5]);
 		int row = 0, col = 2, i = 0;
-		String[] words = getMess().split("\\s"); 
+		String[] words = inMess.split(" "); 
 		for (String s : words) {
 			char[] splitWords = s.toCharArray();
 			for (char c : splitWords) {
 				int[] color = new int[3];
 				int hashVal = Character.hashCode(c);
-				if((i==3)&&(color[i] != 0)){
+				if((i==3)/*&&(color[i] != 0)*/){
 					if(row != getLength().intValue()-1){
 						if (col != getWidth().intValue()-1) {
 							// general cells - the inbetween
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
+							// pic[row][col] = Color.web(Integer.toHexString(color[0])+Integer.toHexString(color[1])+Integer.toHexString(color[2]));
 							col++;
 						}else{
 							//if it is the last column in the row
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
+							// pic[row][col] = Color.web(Integer.toHexString(color[0])+Integer.toHexString(color[1])+Integer.toHexString(color[2]));
 							col = 0;
 							row++;
 						}
@@ -146,10 +148,12 @@ public class Encrypt extends Crypt{
 						if (col != getWidth().intValue()-1) {
 							//all cells before the last cell
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
+							// pic[row][col] = Color.web(Integer.toHexString(color[0])+Integer.toHexString(color[1])+Integer.toHexString(color[2]));
 							col++;
 						}else{
 							//the last cell
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
+							// pic[row][col] = Color.web(Integer.toHexString(color[0])+Integer.toHexString(color[1])+Integer.toHexString(color[2]));
 						}
 					}
 					i = 0;

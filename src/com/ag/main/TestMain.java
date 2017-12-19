@@ -19,8 +19,8 @@ public class TestMain /*extends Application*/{
 	public static void main(String [] args){
 		//launch(args);
 		// String test = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890-=!@#$%^&*()_+\\,./<>?;':\"{}[] ";
-		String test = "The quick brown fox jumps over the lazy dog";
-		System.out.println("total length: "+test.length());
+		// String test = "The quick brown fox jumps over the lazy dog";
+		// System.out.println("total length: "+test.length());
 		// System.out.println(test.hashCode());
 		// String[] test1 = test.split(" ");
 		// for (String a : test1) {
@@ -31,8 +31,8 @@ public class TestMain /*extends Application*/{
 		// 	}
 		// 	System.out.println();
 		// }
-		Color t = Color.web("000000");
-		// aspectTesting();
+		// Color t = Color.web("000000");
+		aspectTesting();
 	}
 
     /*private int[][] arrayValues;
@@ -75,10 +75,10 @@ public class TestMain /*extends Application*/{
 			if(in == -1){
 				f = false;
 			}else{*/
-		int[] test = new int[50];
-		for (int i = 0; i < test.length; i++){
+		int[] test = {43, 35};
+		/*for (int i = 0; i < test.length; i++){
 			test[i] = 3*(i+1);
-		}
+		}*/
 		for (int i : test) {
 			int completeColors = (i/3)+2;
 			int unPairedColors = i%3;

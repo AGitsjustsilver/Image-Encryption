@@ -26,7 +26,7 @@ public abstract class Crypt{
 
 	protected final String BLANK = "FF";
 
-	private String inMess;
+	protected String inMess;
 	private Image inImg;
 	protected static PixelWriter pW;
 	protected static PixelReader pR;
@@ -71,7 +71,7 @@ public abstract class Crypt{
 	public static void setAllBlank(){
 		for (int row = 0;row < pic.length; row++) {
 			for (int col = 0;col < pic[row].length; col++) {
-				pic[row][col] = Color.web("FFFFFF");
+				pic[row][col] = Color.rgb(255,255,255);
 			}
 		}
 	}
@@ -90,6 +90,17 @@ public abstract class Crypt{
 
 	public Color[][] getPic(){
 		return pic;
+	}
+
+	public String toString(){
+		Color[][] p = getPic();
+		String res = "";
+		for (int row = 0;row < p.length; row++) {
+			for (int col = 0;col < p[row].length; col++) {
+				res += p[row][col].toString() + " ";
+			}
+		}
+		return res;
 	}
 
 }
