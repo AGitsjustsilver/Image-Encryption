@@ -24,8 +24,6 @@ import javafx.scene.paint.Color;
 
 public abstract class Crypt{
 
-	protected final String BLANK = "FF";
-
 	protected String inMess;
 	private Image inImg;
 	protected static PixelWriter pW;
@@ -102,5 +100,7 @@ public abstract class Crypt{
 		}
 		return res;
 	}
+
+	public abstract WritableImage resultImg();
 
 }

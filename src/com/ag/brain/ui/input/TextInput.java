@@ -22,7 +22,7 @@ public class TextInput extends GridPane{
 	*	area to put message that the user chooses to encrypt
 	**/
 
-	private static Encrypt c;
+	// private static Crypt c;
 
 	public TextInput(){
 		this.setVgap(5.0);
@@ -56,8 +56,8 @@ public class TextInput extends GridPane{
 					IEUtils.setFileName(fileName.getText());
 					IEUtils.setFileType(fileExtention.getValue());
 					String mess = input.getText();
-					c = new Encrypt(mess);
-					IEUtils.imOut.setImage(c.result());
+					Crypt c = new Encrypt(mess);
+					IEUtils.imOut.setImage(c.resultImg());
 					warn.setText("");//last operation
 				}
 			}); 

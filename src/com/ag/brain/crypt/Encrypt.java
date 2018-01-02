@@ -129,7 +129,7 @@ public class Encrypt extends Crypt{
 			for (char c : splitWords) {
 				int[] color = new int[3];
 				int hashVal = Character.hashCode(c);
-				if((i==3)/*&&(color[i] != 0)*/){
+				if(i==3){
 					if(row != getLength().intValue()-1){
 						if (col != getWidth().intValue()-1) {
 							// general cells - the inbetween
@@ -160,9 +160,7 @@ public class Encrypt extends Crypt{
 				}else{
 					//initializes the array of hash values to put into colors
 					color[i] = hashVal;
-					if(i != 2 && i < 3){
-						i++;
-					}
+					i++;
 				}
 			}
 		}
@@ -179,7 +177,7 @@ public class Encrypt extends Crypt{
 		pW = i.getPixelWriter();
 	}
 
-	public WritableImage result(){
+	public WritableImage resultImg(){
 		WritableImage i = new WritableImage(getLength().intValue(), getWidth().intValue());
 		setPixelWriter(i);
 		for (int row = 0;row < pic.length; row++) {

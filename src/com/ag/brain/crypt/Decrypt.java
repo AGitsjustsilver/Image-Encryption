@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javafx.scene.paint.Color;
+import javafx.scene.image.WritableImage;
 
 public class Decrypt extends Crypt{
 
@@ -36,5 +37,9 @@ public class Decrypt extends Crypt{
 	public static String result(){
 
 	} */
+
+	public WritableImage resultImg(){
+		return null;
+	};
 
 }
