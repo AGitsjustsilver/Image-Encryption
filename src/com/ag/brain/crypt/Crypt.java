@@ -34,7 +34,13 @@ public abstract class Crypt{
 
 	public Crypt(String in){
 		inMess = in;
-		calcBounds();
+		int len = inMess.length();
+		int numOfColors = (len / 3)+2;//2 colors from the meta data
+		int numOfUnpaired = len % 3;
+		l = new Double(Math.floor((numOfColors+((numOfUnpaired%3!=0)? 1:0))/(4/3.0))+1);
+		w = new Double(Math.floor((4/3.0) * l)+1);
+		pic = new Color[l.intValue()][w.intValue()];
+		setAllBlank();
 	}
 
 	public Crypt(File i) throws FileNotFoundException{
@@ -42,28 +48,12 @@ public abstract class Crypt{
 			inImg = new Image(new FileInputStream(i));
 			pR = inImg.getPixelReader();
 			inMess = "";
-			calcBounds();
+			w = inImg.getWidth();
+			l = inImg.getHeight();
 		}catch (FileNotFoundException fnfe){
 			throw new FileNotFoundException("No file was found.");
 		}
 
-	}
-
-	public void calcBounds(){
-		// message
-		if(!(inMess.isEmpty())){
-			//4:3 aspect ratio
-			int len = inMess.length();
-			int numOfColors = (len / 3)+2;//2 colors from the meta data
-			int numOfUnpaired = len % 3;
-			l = new Double(Math.floor((numOfColors+((numOfUnpaired%3!=0)? 1:0))/(4/3.0))+1);
-			w = new Double(Math.floor((4/3.0) * l)+1);
-			pic = new Color[l.intValue()][w.intValue()];
-		}else{ // image
-			w = inImg.getWidth();
-			l = inImg.getHeight();
-
-		}
 	}
 
 	public static void setAllBlank(){

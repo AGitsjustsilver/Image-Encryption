@@ -118,7 +118,6 @@ public class Encrypt extends Crypt{
 	}
 
 	public void create(){
-		super.setAllBlank();
 		int[] t = getMetaShift();
 		pic[0][0] = Color.rgb(t[0], t[1], t[2]);
 		pic[0][1] = Color.rgb(t[3], t[4], t[5]);
