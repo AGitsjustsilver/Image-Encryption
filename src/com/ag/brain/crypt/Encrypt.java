@@ -122,11 +122,11 @@ public class Encrypt extends Crypt{
 		pic[0][0] = Color.rgb(t[0], t[1], t[2]);
 		pic[0][1] = Color.rgb(t[3], t[4], t[5]);
 		int row = 0, col = 2, i = 0;
+		int[] color = new int[3];
 		String[] words = inMess.split(" "); 
 		for (String s : words) {
 			char[] splitWords = s.toCharArray();
 			for (char c : splitWords) {
-				int[] color = new int[3];
 				int hashVal = Character.hashCode(c);
 				if(i==3){
 					if(row != getLength().intValue()-1){
@@ -154,6 +154,9 @@ public class Encrypt extends Crypt{
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
 							// pic[row][col] = Color.web(Integer.toHexString(color[0])+Integer.toHexString(color[1])+Integer.toHexString(color[2]));
 						}
+					}
+					for(int d: color){
+						d = 0;
 					}
 					i = 0;
 				}else{

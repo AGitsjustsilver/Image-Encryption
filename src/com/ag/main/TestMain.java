@@ -40,10 +40,10 @@ public class TestMain /*extends Application*/{
 		pic = new Color[r.intValue()][c.intValue()];
 		String[] test1 = TEST_STRING.split(" ");
 		int row = 0, col = 0, i = 0;
+		int[] color = new int[3];
 		for (String a : test1) {
 			char[] t = a.toCharArray();
 			for (char b : t) {
-				int[] color = new int[3];
 				int hashVal = Character.hashCode(b);
 				if(i==3){
 					if(row != r.intValue()-1){
@@ -75,6 +75,9 @@ public class TestMain /*extends Application*/{
 							// pic[row][col] = Color.valueOf(color[0] + color[1] + color[2]);
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
 						}
+					}
+					for(int d: color){
+						d = 0;
 					}
 					i = 0;
 				}else{
