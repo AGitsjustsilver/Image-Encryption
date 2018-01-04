@@ -37,7 +37,7 @@ public abstract class Crypt{
 		int len = inMess.length();
 		int numOfColors = (len / 3)+2;//2 colors from the meta data
 		int numOfUnpaired = len % 3;
-		l = new Double(Math.floor((numOfColors+((numOfUnpaired%3!=0)? 1:0))/(4/3.0))+1);
+		l = new Double(Math.floor(Math.sqrt((numOfColors+((numOfUnpaired%3!=0)? 1:0))/(4/3.0)))+1);
 		w = new Double(Math.floor((4/3.0) * l)+1);
 		pic = new Color[l.intValue()][w.intValue()];
 		setAllBlank();
@@ -56,10 +56,10 @@ public abstract class Crypt{
 
 	}
 
-	public static void setAllBlank(){
+	public void setAllBlank(){
 		for (int row = 0;row < pic.length; row++) {
 			for (int col = 0;col < pic[row].length; col++) {
-				pic[row][col] = Color.rgb(255,255,255);
+				pic[row][col] = Color.rgb(255,255,255, .25);
 			}
 		}
 	}

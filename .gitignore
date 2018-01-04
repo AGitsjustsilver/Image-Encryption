@@ -22,5 +22,5 @@
 hs_err_pid*
 
 #inteliJ files
-#*.xml
-#*.iml
+/.idea
+*.iml

@@ -2,10 +2,7 @@ package com.ag.main;
 
 import com.ag.brain.crypt.*;
 
-import java.util.Scanner;
-import java.util.HashMap;
-import java.util.TreeMap;
-import java.util.SortedMap;
+import java.util.*;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -30,8 +27,73 @@ public class TestMain /*extends Application*/{
 /*		String test = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890-=!@#$%^&*()_+\\,./<>?;':\"{}[] ";
 		System.out.println("total length: "+test.length());
 		System.out.println(test.hashCode());*/
+//		algTest();
+//		regExTest();
+		// Color t = Color.web("000000");
+		 aspectTesting();
+	}
+
+	/*private GridPane g;
+
+	public void start(Stage pStage){
+		pStage.setTitle("Testing Class");
+		g = new GridPane();
+
+
+
+		Scene s = new Scene(g, 500, 500);
+		pStage.setScene(s);
+		pStage.show();
+	}*/
+
+
+	public static void aspectTesting(){
+		// Scanner s = new Scanner(System.in);
+		// boolean f = true;
+		// while(f){
+		// 	int in = s.nextInt();
+		// 	if(in == -1){
+		// 		f = false;
+		// 	}else{
+				// int[] test = {43, 35};
+				int[] test = {TEST_STRING.length(), 32};
+				for (int i : test) {
+					int completeColors = (i/3)+2;
+					int unPairedColors = i%3;
+					// for a 4:3 aspect ratio
+					double row = Math.floor(Math.sqrt((completeColors+((unPairedColors%3!=0)? 1:0))/(4/3.0)))+1;
+					double col = Math.floor((4/3.0) * row)+1;
+					double totalPix = row*col;
+					double emptyPix43 = totalPix - (completeColors+((unPairedColors%3!=0)? 1:0));
+					System.out.println("Number of Characters\tTotal Pixels\tColumn Pixels\tRow Pixels\tEmpty Pixels");
+					System.out.printf("%-23d %-15.0f %-15.0f %-11.0f %-15.0f\n", i, totalPix, col, row, emptyPix43);
+				}
+		// 	}
+		// }
+		// s.close();
+
+			// int len = inMess.length();
+			// int numOfColors = len / 3;
+			// int numOfUnpaired = len % 3;
+			// w = new Double(Math.floor((numOfColors+((numOfUnpaired%3 != 0)? 1:0))/(4/3.0))+1);
+			// l = new Double(Math.floor((4/3.0) * w)+1);
+	}
+
+	public static void algTest(){
+		Random rand = new Random();
+		int[] meta = new int[6];
+		for(int l = 0; l < meta.length; l++){
+			meta[l] = rand.nextInt(255)+1;
+		}
+		String[] testLen = TEST_STRING.split(" ");
+		int f = 0;
 		int g = TEST_STRING.length();
+		for(String s: testLen){
+			f += s.length();
+		}
+//		int completeColors = (f/3)+2;
 		int completeColors = (g/3)+2;
+//		int unPairedColors = f%3;
 		int unPairedColors = g%3;
 		// for a 4:3 aspect ratio
 		Double r = Math.floor(Math.sqrt((completeColors+((unPairedColors%3!=0)? 1:0))/(4/3.0)))+1;
@@ -39,12 +101,19 @@ public class TestMain /*extends Application*/{
 
 		pic = new Color[r.intValue()][c.intValue()];
 		String[] test1 = TEST_STRING.split(" ");
-		int row = 0, col = 0, i = 0;
+		pic[0][0] = Color.rgb(meta[0], meta[1], meta[2], .5);
+		pic[0][1] = Color.rgb(meta[3], meta[4], meta[5], .5);
+		int row = 0, col = 2, i = 0;
 		int[] color = new int[3];
 		for (String a : test1) {
 			char[] t = a.toCharArray();
 			for (char b : t) {
-				int hashVal = Character.hashCode(b);
+				int hashVal;
+				if(b == t[t.length-1]){
+					hashVal = 32;
+				}else{
+					hashVal = Character.hashCode(b);
+				}
 				if(i==3){
 					if(row != r.intValue()-1){
 						if (col != c.intValue()-1) {
@@ -99,61 +168,35 @@ public class TestMain /*extends Application*/{
 		for (int r1 = 0;r1 < pic.length; r1++) {
 			for (int c1 = 0;c1 < pic[r1].length; c1++) {
 				if(pic[r1][c1] != null){
-					res += pic[r1][c1].toString() + " ";
+					if (c1 == pic[r1].length-1){
+						res += pic[r1][c1].toString() + " \n";
+					}else{
+						res += pic[r1][c1].toString() + " ";
+					}
 				}else{
-					res += "null ";
+					if (c1 == pic[r1].length-1){
+						res += "null \n";
+					}else{
+						res += "null ";
+					}
 				}
 			}
 		}
 		System.out.println(res);
-		// Color t = Color.web("000000");
-		// aspectTesting();
 	}
 
-	/*private GridPane g;
-
-	public void start(Stage pStage){
-		pStage.setTitle("Testing Class");
-		g = new GridPane();
-
-
-
-		Scene s = new Scene(g, 500, 500);
-		pStage.setScene(s);
-		pStage.show();
-	}*/
-
-
-/*	public static void aspectTesting(){
-		// Scanner s = new Scanner(System.in);
-		// boolean f = true;
-		// while(f){
-		// 	int in = s.nextInt();
-		// 	if(in == -1){
-		// 		f = false;
-		// 	}else{
-				// int[] test = {43, 35};
-				int[] test = {TEST_STRING.length()};
-				for (int i : test) {
-					int completeColors = (i/3)+2;
-					int unPairedColors = i%3;
-					// for a 4:3 aspect ratio
-					double row = Math.floor(Math.sqrt((completeColors+((unPairedColors%3!=0)? 1:0))/(4/3.0)))+1;
-					double col = Math.floor((4/3.0) * row)+1;
-					double totalPix = row*col;
-					double emptyPix43 = totalPix - (completeColors+((unPairedColors%3!=0)? 1:0));
-					System.out.println("Number of Characters\tTotal Pixels\tColumn Pixels\tRow Pixels\tEmpty Pixels");
-					System.out.printf("%d\t\t\t%.0f\t\t%.0f\t\t%.0f\t\t%.0f\n\n", i, totalPix, col, row, emptyPix43);
-				}
-		// 	}
-		// }
-		// s.close();
-
-			// int len = inMess.length();
-			// int numOfColors = len / 3;
-			// int numOfUnpaired = len % 3;
-			// w = new Double(Math.floor((numOfColors+((numOfUnpaired%3 != 0)? 1:0))/(4/3.0))+1);
-			// l = new Double(Math.floor((4/3.0) * w)+1);
-	}*/
-
+	public static void regExTest(){
+		String[] t = TEST_STRING.split(" ");
+		for(String s: t){
+			System.out.print(s);
+		}
+		System.out.println();
+		StringBuilder b;
+		for (int i  = 0; i < t.length; i++){
+			 t[i].concat(" ");
+		}
+		for(String s: t){
+			System.out.print(s);
+		}
+	}
 }
