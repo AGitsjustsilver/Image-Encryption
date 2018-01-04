@@ -29,7 +29,7 @@ public class IEUtils{
 	private static final double ERROR_WIDTH = 400;
 	private static final double ERROR_HEIGHT  = 100;
 
-	public static final ImageInput imIn = new ImageInput();
+	public static final FileInput imIn = new FileInput();
 	public static final TextInput textIn = new TextInput();
 	public static final ImageOutput imOut = new ImageOutput();
 	public static final TextOutput textOut = new TextOutput();

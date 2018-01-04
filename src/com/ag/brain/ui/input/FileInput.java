@@ -10,16 +10,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
-public class ImageInput extends GridPane{
+public class FileInput extends GridPane{
 
 	private FileChooser fc;
 	private static File f;
 
-	public ImageInput(){
+	public FileInput(){
 		this.setVgap(5);
 		this.setHgap(5);
 
-		Text t0 = new Text("Submit a .txt File to encrypt");
+		Text t0 = new Text("Submit a File to encrypt");
 		this.add(t0,0,0);
 
 		fc = new FileChooser();
@@ -27,7 +27,7 @@ public class ImageInput extends GridPane{
 		this.add(t1, 0, 1);
 		this.setRowSpan(t1,2);
 
-		Button b = new Button("Choose Image");
+		Button b = new Button("Choose File");
 		Button b1 = new Button("Encrypt");
 		b1.setDisable(true);
 		Button b2 = new Button("Decrypt");
