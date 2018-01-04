@@ -19,18 +19,10 @@ public class TestMain /*extends Application*/{
 	public static Color[][] pic;
 
 	public static void main(String [] args){
-
-/*		Crypt c = new Encrypt(test);
-
-		System.out.println(c.toString());*/
-		// launch(args);
-/*		String test = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890-=!@#$%^&*()_+\\,./<>?;':\"{}[] ";
-		System.out.println("total length: "+test.length());
-		System.out.println(test.hashCode());*/
-//		algTest();
+//		launch(args);
+		algTest();
 //		regExTest();
-		// Color t = Color.web("000000");
-		 aspectTesting();
+//		aspectTesting();
 	}
 
 	/*private GridPane g;
@@ -85,15 +77,8 @@ public class TestMain /*extends Application*/{
 		for(int l = 0; l < meta.length; l++){
 			meta[l] = rand.nextInt(255)+1;
 		}
-		String[] testLen = TEST_STRING.split(" ");
-		int f = 0;
 		int g = TEST_STRING.length();
-		for(String s: testLen){
-			f += s.length();
-		}
-//		int completeColors = (f/3)+2;
 		int completeColors = (g/3)+2;
-//		int unPairedColors = f%3;
 		int unPairedColors = g%3;
 		// for a 4:3 aspect ratio
 		Double r = Math.floor(Math.sqrt((completeColors+((unPairedColors%3!=0)? 1:0))/(4/3.0)))+1;
@@ -108,40 +93,27 @@ public class TestMain /*extends Application*/{
 		for (String a : test1) {
 			char[] t = a.toCharArray();
 			for (char b : t) {
-				int hashVal;
-				if(b == t[t.length-1]){
-					hashVal = 32;
-				}else{
-					hashVal = Character.hashCode(b);
-				}
+				int hashVal = Character.hashCode(b);
 				if(i==3){
 					if(row != r.intValue()-1){
 						if (col != c.intValue()-1) {
 							// general cells - the inbetween
-							System.out.println("2 1");
-							// pic[row][col] = Color.valueOf(color[0] + color[1] + color[2]);
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
 							col++;
 						}else{
 							//if it is the last column in the row
-							System.out.println("3");
-							// pic[row][col] = Color.valueOf(color[0] + color[1] + color[2]);
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
 							col = 0;
 							row++;
 						}
 					}else{
 						//if it is the last row
-						System.out.println("2 2");
 						if (col != c.intValue()-1) {
 							//all cells before the last cell
-							// pic[row][col] = Color.valueOf(color[0] + color[1] + color[2]);
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
 							col++;
 						}else{
 							//the last cell
-							System.out.println("4");
-							// pic[row][col] = Color.valueOf(color[0] + color[1] + color[2]);
 							pic[row][col] = Color.rgb(color[0],color[1],color[2]);
 						}
 					}
@@ -151,14 +123,6 @@ public class TestMain /*extends Application*/{
 					i = 0;
 				}else{
 					//initializes the array of hash values to put into colors
-					System.out.println("1 - " + hashVal);
-					/*if(hashVal >= 16){
-						color[i] = Integer.toHexString(hashVal);
-						System.out.println("\t1 " + i + " " + color[i] + " " + hashVal);
-					}else{
-						color[i] = "0"+ Integer.toHexString(hashVal);
-						System.out.println("\t2 " + i + " " + color[i] + " " + hashVal);
-					}*/
 					color[i] = hashVal;
 					i++;
 				}

@@ -35,7 +35,7 @@ public class AppMenu extends MenuBar{
 					IEUtils.imIn.setVisible(false);
 				});
 
-			MenuItem img = new MenuItem("Image");
+			MenuItem img = new MenuItem("File");
 				img.setOnAction(event ->{
 					IEUtils.imIn.setVisible(true);
 					UserInterface.setTopNode(IEUtils.imIn);
@@ -50,8 +50,12 @@ public class AppMenu extends MenuBar{
 				imgO.setOnAction(event -> {
 					UserInterface.setBotNode(IEUtils.imOut);
 				});
+			MenuItem textO = new MenuItem("Text");
+				textO.setOnAction(event ->{
+					UserInterface.setBotNode(IEUtils.textOut);
+				});
 
-		out.getItems().add(imgO);
+		out.getItems().addAll(imgO, textO);
 
 		this.getMenus().addAll(file, in, out);
 	}

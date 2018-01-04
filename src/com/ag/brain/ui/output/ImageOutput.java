@@ -15,9 +15,9 @@ public class ImageOutput extends GridPane{
 	public ImageOutput(){
 //		this.setGridLinesVisible(true);
 		viewer = new ImageView();
-		viewer.setFitHeight(300);
-		viewer.setFitWidth(400);
-		viewer.setSmooth(false);
+		viewer.setFitHeight(350);
+		viewer.setFitWidth(500);
+		viewer.setSmooth(true);
 		this.setColumnSpan(viewer, 2);
 		this.add(viewer, 0, 0);
 

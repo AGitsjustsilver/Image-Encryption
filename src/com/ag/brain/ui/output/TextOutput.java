@@ -11,9 +11,13 @@ public class TextOutput extends GridPane{
 
 	public TextOutput(){
 		s = new ScrollPane();
+		s.setPrefSize(500,350);
 		this.add(s, 0, 0);
 
 		Button download = new Button("Download");
+			download.setOnMouseClicked(event -> {
+
+			});
 		this.add(download, 0, 1);
 	}
 

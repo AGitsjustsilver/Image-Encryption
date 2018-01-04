@@ -20,7 +20,7 @@ public class UserInterface extends BorderPane{
 		menu = new AppMenu(s);
 		g = new GridPane();
 		g.setAlignment(Pos.CENTER);
-		// this.setTopNode(new TextInput());
+		g.setVgap(5);
 		this.setTopNode(IEUtils.textIn);
 		this.setBotNode(IEUtils.imOut);
 
