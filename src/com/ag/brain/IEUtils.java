@@ -1,26 +1,28 @@
 package com.ag.brain;
 
-import com.ag.brain.ui.input.*;
-import com.ag.brain.ui.output.*;
-
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import com.ag.brain.ui.input.FileInput;
+import com.ag.brain.ui.input.TextInput;
+import com.ag.brain.ui.output.ImageOutput;
+import com.ag.brain.ui.output.TextOutput;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
-import javafx.stage.Modality;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class IEUtils{
 

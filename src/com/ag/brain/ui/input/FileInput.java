@@ -2,16 +2,17 @@ package com.ag.brain.ui.input;
 
 import com.ag.brain.IEUtils;
 import com.ag.brain.crypt.Crypt;
+import com.ag.brain.crypt.Decrypt;
 import com.ag.brain.crypt.Encrypt;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class FileInput extends GridPane{
 
@@ -57,7 +58,7 @@ public class FileInput extends GridPane{
 					IEUtils.errorDisplay("You must choose a file.");
 				}
 			});
-			b1.setOnAction(event -> {//Encryption
+			b1.setOnMouseClicked(event -> {//Encryption
 				IEUtils.setFileName(f.getName());
 				IEUtils.setFileType("png");
 				String mess = "";
@@ -72,8 +73,13 @@ public class FileInput extends GridPane{
 				Crypt c = new Encrypt(mess);
 				IEUtils.imOut.setImage(c.resultImg());
 			});
-			b2.setOnAction(event -> {//Decryption
-				//TODO
+			b2.setOnMouseClicked(event -> {//Decryption
+                try {
+                    Crypt c = new Decrypt(f);
+                }catch (IOException e){
+                    System.out.println("oof");
+                    e.printStackTrace();
+                }
 			});
 		this.add(b, 1, 1);
 		this.setRowSpan(b,2);

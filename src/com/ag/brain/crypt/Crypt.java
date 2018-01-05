@@ -1,11 +1,14 @@
 package com.ag.brain.crypt;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-import javafx.scene.image.*;
-import javafx.scene.paint.Color;
 
 /*
 *			 W
@@ -31,8 +34,10 @@ public abstract class Crypt{
 	private Double l;
 	private Double w;
 	protected static Color[][] pic;
+    protected int[] metaShift = new int[6];
 
-	public Crypt(String in){
+
+    public Crypt(String in){
 		inMess = in;
 		int len = inMess.length();
 		int numOfColors = (len / 3)+2;//2 colors from the meta data
@@ -55,6 +60,11 @@ public abstract class Crypt{
 		}
 
 	}
+
+
+    public int[] getMetaShift(){
+        return metaShift;
+    }
 
 	public void setAllBlank(){
 		for (int row = 0;row < pic.length; row++) {

@@ -1,26 +1,25 @@
 package com.ag.main;
 
-import com.ag.brain.crypt.*;
-
-import java.util.*;
-
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.image.*;
-import javafx.scene.layout.GridPane;
+import com.ag.brain.crypt.Crypt;
+import com.ag.brain.crypt.Encrypt;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+
+import java.util.Random;
 
 public class TestMain /*extends Application*/{
 
 	public static final String TEST_STRING = "The quick brown fox jumps over the lazy dog";
 	public static Color[][] pic;
 
+	public TestMain(){
+
+    }
+
 	public static void main(String [] args){
 //		launch(args);
-//		algTest();
+		/*TestMain a = new TestMain();
+        a.algTest();*/
+        Crypt c = new Encrypt(TEST_STRING);
 //		regExTest();
 //		aspectTesting();
 
@@ -40,33 +39,7 @@ public class TestMain /*extends Application*/{
 		pStage.show();
 	}*/
 
-//	public static int hexToInt(String twoDigitHex){
-//	    HashMap<Character, Integer> map = build();
-//        char c1 = twoDigitHex.charAt(0);
-//        char c2 = twoDigitHex.charAt(1);
-//        return ( * 16) + ( * 1);
-//    }
 
-    public static HashMap<Character, Integer> build(){
-        HashMap<Character, Integer> map = new HashMap<>();
-        map.put(new Character('0'), new Integer(0));
-        map.put(new Character('1'), new Integer(1));
-        map.put(new Character('2'), new Integer(2));
-        map.put(new Character('3'), new Integer(3));
-        map.put(new Character('4'), new Integer(4));
-        map.put(new Character('5'), new Integer(5));
-        map.put(new Character('6'), new Integer(6));
-        map.put(new Character('7'), new Integer(7));
-        map.put(new Character('8'), new Integer(8));
-        map.put(new Character('9'), new Integer(9));
-        map.put(new Character('a'), new Integer(10));
-        map.put(new Character('b'), new Integer(11));
-        map.put(new Character('c'), new Integer(12));
-        map.put(new Character('d'), new Integer(13));
-        map.put(new Character('e'), new Integer(14));
-        map.put(new Character('f'), new Integer(15));
-	    return map;
-    }
 
 	public static void setAllTo(){
 		for(int row = 0; row < pic.length; row++){
@@ -108,7 +81,7 @@ public class TestMain /*extends Application*/{
 			// l = new Double(Math.floor((4/3.0) * w)+1);
 	}
 
-	public static void algTest(){
+	public void algTest(){
 		Random rand = new Random();
 		int[] meta = new int[6];
 		for(int l = 0; l < meta.length; l++){
@@ -187,7 +160,9 @@ public class TestMain /*extends Application*/{
 		System.out.println(res);
 	}
 
-	public static void regExTest(){
+
+
+    public static void regExTest(){
 		String[] t = TEST_STRING.split(" ");
 		for(String s: t){
 			System.out.print(s);

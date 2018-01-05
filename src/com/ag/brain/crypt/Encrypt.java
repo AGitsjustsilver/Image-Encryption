@@ -1,16 +1,12 @@
 package com.ag.brain.crypt;
 
-import java.io.FileNotFoundException;
-import java.util.Random;
-
-import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
+import java.util.Random;
+
 public class Encrypt extends Crypt{
 
-
-	private int[] metaShift = new int[6];
 
 	public Encrypt(String i){
 		super(i);
@@ -169,9 +165,6 @@ public class Encrypt extends Crypt{
 		}
 	}
 
-	public int[] getMetaShift(){
-		return metaShift;
-	}
 
 	public void setPixelWriter(WritableImage i){
 		pW = i.getPixelWriter();
