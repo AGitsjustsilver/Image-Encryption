@@ -20,9 +20,11 @@ public class TestMain /*extends Application*/{
 
 	public static void main(String [] args){
 //		launch(args);
-		algTest();
+//		algTest();
 //		regExTest();
 //		aspectTesting();
+
+//        System.out.println("a has the hash code of " + Character.hashCode('a') + ".\n" + "a also has the hashcode of " + (int)'a' +". \n" + "but 97 is the character " + (char)97);
 	}
 
 	/*private GridPane g;
@@ -38,6 +40,41 @@ public class TestMain /*extends Application*/{
 		pStage.show();
 	}*/
 
+//	public static int hexToInt(String twoDigitHex){
+//	    HashMap<Character, Integer> map = build();
+//        char c1 = twoDigitHex.charAt(0);
+//        char c2 = twoDigitHex.charAt(1);
+//        return ( * 16) + ( * 1);
+//    }
+
+    public static HashMap<Character, Integer> build(){
+        HashMap<Character, Integer> map = new HashMap<>();
+        map.put(new Character('0'), new Integer(0));
+        map.put(new Character('1'), new Integer(1));
+        map.put(new Character('2'), new Integer(2));
+        map.put(new Character('3'), new Integer(3));
+        map.put(new Character('4'), new Integer(4));
+        map.put(new Character('5'), new Integer(5));
+        map.put(new Character('6'), new Integer(6));
+        map.put(new Character('7'), new Integer(7));
+        map.put(new Character('8'), new Integer(8));
+        map.put(new Character('9'), new Integer(9));
+        map.put(new Character('a'), new Integer(10));
+        map.put(new Character('b'), new Integer(11));
+        map.put(new Character('c'), new Integer(12));
+        map.put(new Character('d'), new Integer(13));
+        map.put(new Character('e'), new Integer(14));
+        map.put(new Character('f'), new Integer(15));
+	    return map;
+    }
+
+	public static void setAllTo(){
+		for(int row = 0; row < pic.length; row++){
+			for(int col = 0; col < pic[row].length; col++){
+                pic[row][col] = Color.rgb(0,0,0,.25);
+			}
+		}
+	}
 
 	public static void aspectTesting(){
 		// Scanner s = new Scanner(System.in);
@@ -85,6 +122,7 @@ public class TestMain /*extends Application*/{
 		Double c = Math.floor((4/3.0) * r)+1;
 
 		pic = new Color[r.intValue()][c.intValue()];
+		setAllTo();
 		String[] test1 = TEST_STRING.split(" ");
 		pic[0][0] = Color.rgb(meta[0], meta[1], meta[2], .5);
 		pic[0][1] = Color.rgb(meta[3], meta[4], meta[5], .5);

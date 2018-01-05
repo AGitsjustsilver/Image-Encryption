@@ -32,6 +32,19 @@ public class Decrypt extends Crypt{
 		}
 	}
 
+	public void grabMeta(){
+	    for (int row = 0; row < pic.length; row++){
+	        for (int col = 0; col < pic[row].length; col++){
+	            String colorString = pic[row][col].toString();
+                char last_1 = colorString.charAt(colorString.length()-1);
+                char last_2 = colorString.charAt(colorString.length()-2);
+                if(last_1 == '0' && last_2 == '8'){
+                    String hexColor = colorString.substring(2, 8);
+                }
+            }
+        }
+    }
+
 	/*public static File
 	
 	public static String result(){

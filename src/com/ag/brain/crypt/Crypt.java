@@ -59,7 +59,7 @@ public abstract class Crypt{
 	public void setAllBlank(){
 		for (int row = 0;row < pic.length; row++) {
 			for (int col = 0;col < pic[row].length; col++) {
-				pic[row][col] = Color.rgb(255,255,255, .25);
+				pic[row][col] = Color.rgb(0,0,0,.75);
 			}
 		}
 	}
