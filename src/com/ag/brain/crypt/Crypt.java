@@ -103,4 +103,6 @@ public abstract class Crypt{
 
 	public abstract WritableImage resultImg();
 
+    public abstract File toTxtFile(String name);
+
 }

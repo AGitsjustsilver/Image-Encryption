@@ -3,6 +3,7 @@ package com.ag.brain.crypt;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
+import java.io.File;
 import java.util.Random;
 
 public class Encrypt extends Crypt{
@@ -182,4 +183,7 @@ public class Encrypt extends Crypt{
 		return i;
 	}
 
+	public File toTxtFile(String n){
+	    return null;
+    }
 }

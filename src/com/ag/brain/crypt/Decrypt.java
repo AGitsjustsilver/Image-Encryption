@@ -14,6 +14,7 @@ import java.util.HashMap;
 public class Decrypt extends Crypt{
 
 	private PrintWriter opr;
+	private String mess = "";
 
 	public Decrypt(File i) throws IOException{
 		super(i);
@@ -153,7 +154,15 @@ public class Decrypt extends Crypt{
 	    for(int a : getMetaShift()){
 	        unshift(a);
         }
-        /*I can get the colors back to characters but i cant get the spacing back*/
+        for(int row = 0; row < pic.length; row++){
+	        for(int col = 2; col < pic[row].length; col++){
+	            String hexColor = pic[row][col].toString().substring(2,8);
+	            String[] split = {hexColor.substring(0,2), hexColor.substring(2,4),hexColor.substring(4)};
+	            for(String a : split){
+	                mess += hexToChar(a);
+                }
+            }
+        }
     }
 
     private char hexToChar(String twoDigitHex){
@@ -201,4 +210,15 @@ public class Decrypt extends Crypt{
 		return null;
 	};
 
+	public File toTxtFile(String name){
+	    File f = new File(name + ".txt");
+	    try{
+            PrintWriter pr = new PrintWriter(f);
+            pr.write(mess);
+            pr.close();
+        }catch (FileNotFoundException e){
+	        e.printStackTrace();
+        }
+	    return f;
+    }
 }
