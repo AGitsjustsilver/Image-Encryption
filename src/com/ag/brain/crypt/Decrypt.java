@@ -3,6 +3,7 @@ package com.ag.brain.crypt;
 import com.ag.brain.IEUtils;
 
 import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,6 +21,7 @@ public class Decrypt extends Crypt{
 			opr = new PrintWriter(new File(IEUtils.OUT_PATH));
 			read();
 			grabMeta();
+			create();
 		}catch (FileNotFoundException fnfe){
 			System.out.println(fnfe.getMessage());
 		}
@@ -51,7 +53,113 @@ public class Decrypt extends Crypt{
         }
     }
 
-    
+    private void unshift(int instruct){
+        if(instruct%2 != 0){
+            shiftCellsLeft(instruct);
+        }
+        if(instruct%2 == 0){
+            shiftCellsRight(instruct);
+        }
+        if(instruct%5 == 0){
+            shiftCellsDiagonal(instruct);
+        }
+	}
+
+	private void shiftCellsLeft(int shiftC){
+	    while (shiftC != 0){
+            for (int row = 0;row < pic.length; row++) {
+                for (int col = 0;col < pic[row].length; col++) {
+                    Color temp = pic[row][col];
+                    if(col == 0){
+                        //end of the Column
+                        if(row == 0){
+                            // first cell in the array
+                            pic[row][col] = pic[getLength().intValue()-1][getWidth().intValue()-1];
+                            pic[getLength().intValue()-1][getWidth().intValue()-1] = temp;
+                        }else{
+                            pic[row][col] = pic[row-1][getWidth().intValue()-1];
+                            pic[row-1][getWidth().intValue()-1] = temp;
+                        }
+                    }else{
+                        // cells that i hope wont cause an out of bounds exception
+                        pic[row][col] = pic[row][col-1];
+                        pic[row][col-1] = temp;
+                    }
+                }
+            }
+            shiftC--;
+        }
+    }
+
+    private void shiftCellsRight(int shiftC){
+        while(shiftC != 0){
+            for (int row = 0;row < pic.length; row++) {
+                for (int col = 0;col < pic[row].length; col++) {
+                    Color temp = pic[row][col];
+                    if(col == pic[row].length-1){
+                        //end of the Column
+                        if(row == pic.length-1){
+                            // last cell in the array
+                            pic[row][col] = pic[0][0];
+                            pic[0][0] = temp;
+                        }else{
+                            pic[row][col] = pic[row+1][0];
+                            pic[row+1][0] = temp;
+                        }
+                    }else{
+                        // cells that i hope wont cause an out of bounds exception
+                        pic[row][col] = pic[row][col+1];
+                        pic[row][col+1] = temp;
+                    }
+                }
+            }
+            shiftC--;
+        }
+    }
+
+    private void shiftCellsDiagonal(int shiftC){
+	    while(shiftC != 0){
+	        for(int row = 0; row < pic.length; row++){
+	            for(int col = 0; col < pic[row].length; col++){
+	                Color temp = pic[row][col];
+	                if(row != 0){
+	                    if(col != 0){
+                            //1
+                            pic[row][col] = pic[row-1][col-1];
+                            pic[row-1][col-1] = temp;
+                        }else{
+                            //2
+                            pic[row][col] = pic[row-1][getWidth().intValue()-1];
+                            pic[row-1][getWidth().intValue()-1] = temp;
+                        }
+                    }else{
+                        if(col != 0){
+                            //3
+                            pic[row][col] = pic[getLength().intValue()-1][col-1];
+                            pic[getLength().intValue()-1][col-1] = temp;
+                        }else{
+                            //4
+                            pic[row][col] = pic[getLength().intValue()-1][getWidth().intValue()-1];
+                            pic[getLength().intValue()-1][getWidth().intValue()-1] = temp;
+                        }
+                    }
+                }
+            }
+	        shiftC--;
+        }
+    }
+
+    private void create(){
+	    for(int a : getMetaShift()){
+	        unshift(a);
+        }
+        /*I can get the colors back to characters but i cant get the spacing back*/
+    }
+
+    private char hexToChar(String twoDigitHex){
+	    return (char) hexToInt(twoDigitHex);
+    }
+
     private int hexToInt(String twoDigitHex){
         HashMap<Character, Integer> map = build();
         char c1 = twoDigitHex.charAt(0);
@@ -88,7 +196,6 @@ public class Decrypt extends Crypt{
         map.put(new Character('f'), new Integer(15));
         return map;
     }
-
 
     public WritableImage resultImg(){
 		return null;

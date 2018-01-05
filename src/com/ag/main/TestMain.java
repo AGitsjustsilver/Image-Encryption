@@ -17,9 +17,9 @@ public class TestMain /*extends Application*/{
 
 	public static void main(String [] args){
 //		launch(args);
-		/*TestMain a = new TestMain();
-        a.algTest();*/
-        Crypt c = new Encrypt(TEST_STRING);
+		TestMain a = new TestMain();
+        a.algTest();
+//        Crypt c = new Encrypt(TEST_STRING);
 //		regExTest();
 //		aspectTesting();
 

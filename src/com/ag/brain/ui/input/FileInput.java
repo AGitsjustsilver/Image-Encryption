@@ -4,6 +4,7 @@ import com.ag.brain.IEUtils;
 import com.ag.brain.crypt.Crypt;
 import com.ag.brain.crypt.Decrypt;
 import com.ag.brain.crypt.Encrypt;
+import com.ag.brain.ui.UserInterface;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -48,6 +49,7 @@ public class FileInput extends GridPane{
 						case 1://Decrypt
 							b2.setDisable(false);
 							b1.setDisable(true);
+                            UserInterface.setBotNode(IEUtils.textOut);
 							break;
 						default:
 							IEUtils.errorDisplay("Your file must be .png, .gif, .jpeg, .bmp, or .txt");

@@ -14,7 +14,7 @@ public class Encrypt extends Crypt{
 		create();
 	}
 
-	public void shift(int instuct){
+    private void shift(int instuct){
 		if(instuct%2 != 0){
 			shiftCellsRight(instuct);
 		}
@@ -26,7 +26,7 @@ public class Encrypt extends Crypt{
 		}
 	}
 
-	public void shiftCellsLeft(int shiftCount){
+    private void shiftCellsLeft(int shiftCount){
 		while(shiftCount != 0){
 			for (int row = 0;row < pic.length; row++) {
 				for (int col = 0;col < pic[row].length; col++) {
@@ -52,7 +52,7 @@ public class Encrypt extends Crypt{
 		}
 	}
 
-	public void shiftCellsRight(int shiftCount){
+    private void shiftCellsRight(int shiftCount){
 		while(shiftCount != 0){
 			for (int row = 0;row < pic.length; row++) {
 				for (int col = 0;col < pic[row].length; col++) {
@@ -78,24 +78,28 @@ public class Encrypt extends Crypt{
 		}
 	}
 
-	public void shiftCellsDiagonal(int shiftCount){
+    private void shiftCellsDiagonal(int shiftCount){
 		while(shiftCount != 0){
 			for (int row = 0;row < pic.length; row++) {
 				for (int col = 0;col < pic[row].length; col++) {
 					Color temp = pic[row][col];
 					if (row != pic.length-1) {
 						if(col != pic[row].length-1){
+						    //1
 							pic[row][col] = pic[row+1][col+1];
 							pic[row+1][col+1] = temp;
 						}else{
+						    //2
 							pic[row][col] = pic[row+1][0];
 							pic[row+1][0] = temp;
 						}
 					}else{
 						if(col != pic[row].length-1){
+						    //3
 							pic[row][col] = pic[0][col+1];
 							pic[0][col+1] = temp;
 						}else{
+						    //4
 							pic[row][col] = pic[0][0];
 							pic[0][0] = temp;
 						}
@@ -106,14 +110,14 @@ public class Encrypt extends Crypt{
 		}
 	}
 
-	public void createInstruction(){
+    private void createInstruction(){
 		Random r = new Random();
 		for(int i = 0; i < getMetaShift().length; i++){
 			metaShift[i] = r.nextInt(255)+1;
 		}
 	}
 
-	public void create(){
+    private void create(){
 		int[] t = getMetaShift();
 		pic[0][0] = Color.rgb(t[0], t[1], t[2], .5);
 		pic[0][1] = Color.rgb(t[3], t[4], t[5], .5);
@@ -148,9 +152,6 @@ public class Encrypt extends Crypt{
 								pic[row][col] = Color.rgb(color[0],color[1],color[2]);
 							}
 						}
-						for(int d: color){
-							d = 0;
-						}
 						i = 0;
 					}else{
 						//initializes the array of hash values to put into colors
@@ -166,7 +167,7 @@ public class Encrypt extends Crypt{
 	}
 
 
-	public void setPixelWriter(WritableImage i){
+    private void setPixelWriter(WritableImage i){
 		pW = i.getPixelWriter();
 	}
 
