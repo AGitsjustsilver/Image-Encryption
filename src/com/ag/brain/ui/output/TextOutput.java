@@ -1,5 +1,6 @@
 package com.ag.brain.ui.output;
 
+import com.ag.brain.IEUtils;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
@@ -16,13 +17,14 @@ public class TextOutput extends GridPane{
 
 		Button download = new Button("Download");
 			download.setOnMouseClicked(event -> {
-
+                //TODO
+//                IEUtils.saveToFile();
 			});
 		this.add(download, 0, 1);
 	}
 
-	public static void setText(String sa){
-		Text t = new Text(sa);
+	public static void setText(String m){
+		Text t = new Text(m);
 		s.setContent(t);
 	}
 

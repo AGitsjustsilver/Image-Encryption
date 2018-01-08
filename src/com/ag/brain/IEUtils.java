@@ -4,7 +4,6 @@ import com.ag.brain.ui.input.FileInput;
 import com.ag.brain.ui.input.TextInput;
 import com.ag.brain.ui.output.ImageOutput;
 import com.ag.brain.ui.output.TextOutput;
-
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,10 +16,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -39,6 +39,9 @@ public class IEUtils{
 	public static final String OUT_PATH = "C:\\Users\\alessandro.guaresti9\\Desktop";
 	private static String fileType;
 	private static String fileName;
+
+	private static final ExtensionFilter TXT = new ExtensionFilter("Text File", "*.txt");
+	private static final ExtensionFilter IMG = new ExtensionFilter("Image File", "*.png", "*.jpg", "*.gif", "*.bmp");
 
 	public static void errorDisplay(String message){
 		Stage p = new Stage();
@@ -102,9 +105,9 @@ public class IEUtils{
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File(OUT_PATH));
 		fc.setInitialFileName(fileName);
-		fc.getExtensionFilters().addAll(
-			new ExtensionFilter("Image File", "*.png", "*.jpg", "*.gif", "*.bmp"));
-		File f = fc.showSaveDialog(null);
+		fc.getExtensionFilters().add(IMG);
+        fc.setSelectedExtensionFilter(IMG);
+        File f = fc.showSaveDialog(null);
 		if(f != null){
 			BufferedImage bImage = SwingFXUtils.fromFXImage(i, null);
 			try{
@@ -115,5 +118,22 @@ public class IEUtils{
 		}
 			
 	}
+	public static void saveToFile(String s){
+	    FileChooser fc = new FileChooser();
+	    fc.setInitialDirectory(new File(OUT_PATH));
+	    fc.setInitialFileName(fileName);
+	    fc.getExtensionFilters().add(TXT);
+	    fc.setSelectedExtensionFilter(TXT);
+	    File f = fc.showSaveDialog(null);
+	    if(f != null){
+            try{
+                PrintWriter pr = new PrintWriter(f);
+                pr.write(s);
+                pr.close();
+            }catch (FileNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

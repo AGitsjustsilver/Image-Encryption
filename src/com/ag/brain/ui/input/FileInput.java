@@ -45,7 +45,8 @@ public class FileInput extends GridPane{
 						case 0://Encrypt
 							b1.setDisable(false);
 							b2.setDisable(true);
-							break;
+                            UserInterface.setBotNode(IEUtils.imOut);
+                            break;
 						case 1://Decrypt
 							b2.setDisable(false);
 							b1.setDisable(true);
@@ -78,6 +79,7 @@ public class FileInput extends GridPane{
 			b2.setOnMouseClicked(event -> {//Decryption
                 try {
                     Crypt c = new Decrypt(f);
+                    IEUtils.textOut.setText(c.getMess());
                 }catch (IOException e){
                     System.out.println("oof");
                     e.printStackTrace();

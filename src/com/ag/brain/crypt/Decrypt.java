@@ -224,4 +224,7 @@ public class Decrypt extends Crypt{
         }
 	    return f;
     }
+    public String getMessage(){
+	    return mess;
+    }
 }
