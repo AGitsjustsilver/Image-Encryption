@@ -4,6 +4,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Encrypt extends Crypt{
@@ -122,45 +123,50 @@ public class Encrypt extends Crypt{
 		int[] t = getMetaShift();
 		pic[0][0] = Color.rgb(t[0], t[1], t[2], .5);
 		pic[0][1] = Color.rgb(t[3], t[4], t[5], .5);
-		int row = 0, col = 2, i = 0;
-		int[] color = new int[3];
+		int row = 0, col = 2;
+        ArrayList<Integer> color = new ArrayList<>();
 		String[] words = inMess.split(" ");
 		for (String s : words) {
 			char[] splitWords = s.toCharArray();
-			for (char c : splitWords) {
-				int hashVal = Character.hashCode(c);
-				if(hashVal <= 255){
-					if(i==3){
-						if(row != getLength().intValue()-1){
-							if (col != getWidth().intValue()-1) {
-								// general cells - the inbetween
-								pic[row][col] = Color.rgb(color[0],color[1],color[2]);
-								col++;
-							}else{
-								//if it is the last column in the row
-								pic[row][col] = Color.rgb(color[0],color[1],color[2]);
-								col = 0;
-								row++;
-							}
-						}else{
-							//if it is the last row
-							if (col != getWidth().intValue()-1) {
-								//all cells before the last cell
-								pic[row][col] = Color.rgb(color[0],color[1],color[2]);
-								col++;
-							}else{
-								//the last cell
-								pic[row][col] = Color.rgb(color[0],color[1],color[2]);
-							}
-						}
-						i = 0;
-					}else{
-						//initializes the array of hash values to put into colors
-						color[i] = hashVal;
-						i++;
-					}
-				}
-			}
+			for(char b: splitWords){
+			    int hashVal = Character.hashCode(b);
+			    color.add(hashVal);
+			    if(b == splitWords[splitWords.length-1]){
+			        color.add(32);
+                }
+            }
+            if((s.equals(words[words.length-1]))&&(color.size()%3 != 0)){
+			    while (color.size()%3 != 0){
+			        color.add(32);
+                }
+            }
+            while(color.size() >= 3){
+                if(row != getLength().intValue()-1){
+                    if (col != getWidth().intValue()-1) {
+                        // general cells - the inbetween
+                        pic[row][col] = Color.rgb(color.get(0),color.get(1),color.get(2));
+                        col++;
+                    }else{
+                        //if it is the last column in the row
+                        pic[row][col] = Color.rgb(color.get(0),color.get(1),color.get(2));
+                        col = 0;
+                        row++;
+                    }
+                }else{
+                    //if it is the last row
+                    if (col != getWidth().intValue()-1) {
+                        //all cells before the last cell
+                        pic[row][col] = Color.rgb(color.get(0),color.get(1),color.get(2));
+                        col++;
+                    }else{
+                        //the last cell
+                        pic[row][col] = Color.rgb(color.get(0),color.get(1),color.get(2));
+                    }
+                }
+                for(int l = 2; l >= 0; l--){
+                    color.remove(l);
+                }
+            }
 		}
 		for (int a : getMetaShift()) {
 			shift(a);

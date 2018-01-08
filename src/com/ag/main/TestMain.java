@@ -1,9 +1,8 @@
 package com.ag.main;
 
-import com.ag.brain.crypt.Crypt;
-import com.ag.brain.crypt.Encrypt;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -100,92 +99,50 @@ public class TestMain /*extends Application*/{
 		String[] test1 = TEST_STRING.split(" ");
 		pic[0][0] = Color.rgb(meta[0], meta[1], meta[2], .5);
 		pic[0][1] = Color.rgb(meta[3], meta[4], meta[5], .5);
-		int row = 0, col = 2, i = 0, cap = 0;
-		boolean flag = true; // true is color & false is color2
-		int[] color = new int[3];
-		int[] color2 = new int[3];
+		int row = 0, col = 2;
+        ArrayList<Integer> color = new ArrayList<>();
 		for (String a : test1) {
-			char[] t = a.toCharArray();
-            if(flag){
-                if(cap==3){
-                    if(row != r.intValue()-1){
-                        if (col != c.intValue()-1) {
-                            // general cells - the inbetween
-                            pic[row][col] = Color.rgb(color[0],color[1],color[2]);
-                            col++;
-                        }else{
-                            //if it is the last column in the row
-                            pic[row][col] = Color.rgb(color[0],color[1],color[2]);
-                            col = 0;
-                            row++;
-                        }
-                    }else{
-                        //if it is the last row
-                        if (col != c.intValue()-1) {
-                            //all cells before the last cell
-                            pic[row][col] = Color.rgb(color[0],color[1],color[2]);
-                            col++;
-                        }else{
-                            //the last cell
-                            pic[row][col] = Color.rgb(color[0],color[1],color[2]);
-                        }
-                    }
-                    for(int l = 0; l < color.length; l++){
-                        color[l] = 0;
-                    }
-                }
-                cap = 0;
-            }else{
-                if(i==3){
-                    if(row != r.intValue()-1){
-                        if (col != c.intValue()-1) {
-                            // general cells - the inbetween
-                            pic[row][col] = Color.rgb(color2[0],color2[1],color2[2]);
-                            col++;
-                        }else{
-                            //if it is the last column in the row
-                            pic[row][col] = Color.rgb(color2[0],color2[1],color2[2]);
-                            col = 0;
-                            row++;
-                        }
-                    }else{
-                        //if it is the last row
-                        if (col != c.intValue()-1) {
-                            //all cells before the last cell
-                            pic[row][col] = Color.rgb(color2[0],color2[1],color2[2]);
-                            col++;
-                        }else{
-                            //the last cell
-                            pic[row][col] = Color.rgb(color2[0],color2[1],color2[2]);
-                        }
-                    }
-                    for(int l = 0; l < color2.length; l++){
-                        color2[l] = 0;
-                    }
-                }
-                i = 0;
-            }
+            char[] t = a.toCharArray();
             for (char b : t) {
                 //initializes the array of hash values to put into colors
                 int hashVal = Character.hashCode(b);
-				/*try putting a secondary array to hold the rest of the values
-				and have a flag system to switch which one it goes into*/
-                if(flag) {
-                    if (cap != 3) {
-                        color[cap] = hashVal;
-                        cap++;
+                color.add(hashVal);
+                if(b == t[t.length-1]){
+                    color.add(32);
+                }
+            }
+            if ((a.equals(test1[test1.length-1])) && (color.size()%3 != 0)){
+                while(color.size()%3 != 0){
+                    color.add(32);
+                }
+            }
+            while(color.size() >= 3){
+                if(row != r.intValue()-1){
+                    if (col != c.intValue()-1) {
+                        // general cells - the inbetween
+                        pic[row][col] = Color.rgb(color.get(0),color.get(1),color.get(2));
+                        col++;
                     }else{
-                        flag = false;
+                        //if it is the last column in the row
+                        pic[row][col] = Color.rgb(color.get(0),color.get(1),color.get(2));
+                        col = 0;
+                        row++;
                     }
-                }else {
-                    if (i != 3) {
-                        color2[i] = hashVal;
-                        i++;
+                }else{
+                    //if it is the last row
+                    if (col != c.intValue()-1) {
+                        //all cells before the last cell
+                        pic[row][col] = Color.rgb(color.get(0),color.get(1),color.get(2));
+                        col++;
                     }else{
-                        flag = true;
+                        //the last cell
+                        pic[row][col] = Color.rgb(color.get(0),color.get(1),color.get(2));
                     }
                 }
-			}
+                for(int l = 2; l >= 0; l--){
+                    color.remove(l);
+                }
+            }
 		}
 		String res = "";
 		for (int r1 = 0;r1 < pic.length; r1++) {
