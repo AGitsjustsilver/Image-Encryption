@@ -164,12 +164,15 @@ public class TestMain /*extends Application*/{
 		}
 		System.out.println(res);
 		String mess = "";
-        for(int row2 = 0; row2 < pic.length; row2++){
-            for(int col2 = 2; col2 < pic[row2].length; col2++){
-                String hexColor = pic[row2][col2].toString().substring(2,8);
-                String[] split = {hexColor.substring(0,2), hexColor.substring(2,4),hexColor.substring(4)};
-                for(String a : split){
-                    mess += hexToChar(a);
+        for(Color[] a: pic){
+            for(Color b: a){
+                String colorString = b.toString().substring(2,8);
+                String colorAffix = b.toString().substring(8);
+                String[] split = {colorString.substring(0,2), colorString.substring(2,4), colorString.substring(4)};
+                if(colorAffix.equals("ff")){
+                    for(String d: split){
+                        mess += hexToChar(d);
+                    }
                 }
             }
         }

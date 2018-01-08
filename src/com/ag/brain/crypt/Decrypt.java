@@ -154,12 +154,15 @@ public class Decrypt extends Crypt{
 	    for(int a : getMetaShift()){
 	        unshift(a);
         }
-        for(int row = 0; row < pic.length; row++){
-	        for(int col = 2; col < pic[row].length; col++){
-	            String hexColor = pic[row][col].toString().substring(2,8);
-	            String[] split = {hexColor.substring(0,2), hexColor.substring(2,4),hexColor.substring(4)};
-	            for(String a : split){
-	                mess += hexToChar(a);
+        for(Color[] a: pic){
+            for(Color b: a){
+                String colorString = b.toString().substring(2,8);
+                String colorAffix = b.toString().substring(8);
+                String[] split = {colorString.substring(0,2), colorString.substring(2,4), colorString.substring(4)};
+                if(colorAffix.equals("ff")){
+                    for(String d: split){
+                        mess += hexToChar(d);
+                    }
                 }
             }
         }
