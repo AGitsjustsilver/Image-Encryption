@@ -18,14 +18,14 @@ public class Decrypt extends Crypt{
 
 	public Decrypt(File i) throws IOException{
 		super(i);
-		try{
-			opr = new PrintWriter(new File(IEUtils.OUT_PATH));
+		/*try{
+			opr = new PrintWriter(new File(IEUtils.OUT_PATH));*/
 			read();
 			grabMeta();
 			create();
-		}catch (FileNotFoundException fnfe){
+	/*	}catch (FileNotFoundException fnfe){
 			System.out.println(fnfe.getMessage());
-		}
+		}*/
 	}
 
 	private void read(){

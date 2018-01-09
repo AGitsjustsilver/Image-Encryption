@@ -55,6 +55,7 @@ public abstract class Crypt{
 			inMess = "";
 			w = inImg.getWidth();
 			l = inImg.getHeight();
+			pic = new Color[l.intValue()][w.intValue()];
 		}catch (FileNotFoundException fnfe){
 			throw new FileNotFoundException("No file was found.");
 		}
