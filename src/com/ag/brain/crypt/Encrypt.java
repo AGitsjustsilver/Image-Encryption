@@ -129,10 +129,21 @@ public class Encrypt extends Crypt{
 		for (String s : words) {
 			char[] splitWords = s.toCharArray();
 			for(char b: splitWords){
+			    int nonce = 0;
 			    int hashVal = Character.hashCode(b);
-			    color.add(hashVal);
-			    if(b == splitWords[splitWords.length-1]){
-			        color.add(32);
+                if(hashVal <= 255){
+                    color.add(hashVal);
+                    if(b == splitWords[splitWords.length-1]){
+                        color.add(32);
+                    }
+                }else{
+                    while((hashVal > 255) && !(hashVal + nonce <= 255)){
+                        hashVal -= 255;
+                        nonce++;
+                        if(hashVal+nonce <255){
+                            hashVal += nonce;
+                        }
+                    }
                 }
             }
             if((s.equals(words[words.length-1]))&&(color.size()%3 != 0)){

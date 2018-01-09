@@ -44,7 +44,7 @@ public abstract class Crypt{
 		int numOfUnpaired = len % 3;
 		l = new Double(Math.floor(Math.sqrt((numOfColors+((numOfUnpaired%3!=0)? 1:0))/(4/3.0)))+1);
 		w = new Double(Math.floor((4/3.0) * l)+1);
-		pic = new Color[l.intValue()][w.intValue()];
+		pic = new Color[w.intValue()][l.intValue()];
 		setAllBlank();
 	}
 
@@ -55,7 +55,7 @@ public abstract class Crypt{
 			inMess = "";
 			w = inImg.getWidth();
 			l = inImg.getHeight();
-			pic = new Color[l.intValue()][w.intValue()];
+			pic = new Color[w.intValue()][l.intValue()];
 		}catch (FileNotFoundException fnfe){
 			throw new FileNotFoundException("No file was found.");
 		}
@@ -80,11 +80,11 @@ public abstract class Crypt{
 	}
 
 	public Double getLength(){
-		return l;
+		return w;
 	}
 
 	public Double getWidth(){
-		return w;
+		return l;
 	}
 
 	public Color[][] getPic(){

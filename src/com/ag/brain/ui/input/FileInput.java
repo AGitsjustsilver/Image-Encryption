@@ -78,8 +78,8 @@ public class FileInput extends GridPane{
 			});
 			b2.setOnMouseClicked(event -> {//Decryption
                 try {
-                    Crypt c = new Decrypt(f);
-                    IEUtils.textOut.setText(c.getMess());
+                    Decrypt c = new Decrypt(f);
+                    IEUtils.textOut.setText(c.getMessage());
                 }catch (IOException e){
                     System.out.println("oof");
                     e.printStackTrace();

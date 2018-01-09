@@ -8,7 +8,8 @@ import java.util.Random;
 
 public class TestMain /*extends Application*/{
 
-	public static final String TEST_STRING = "The quick brown fox jumps over the lazy dog";
+	public static final String TEST_STRING = "Jean Louise Finch and Jeremiah Atticus Finch learn to handle how life is in To Kill a Mockingbird a novel by Harper Lee. In To Kill a Mockingbird both Jem and scout grow up in a racist community of the south and go through journeys that will prepare them for the future. When a trial flares up scout and Jem learn that life is not what it seemed to be when they were younger.  Both Jem and Scout learn positive and exemplary life lessons from people they look up to.\n" +
+            "Atticus teaches Jem and Scout life lessons through his positive example. For example, when scout does not understand why Miss Caroline does not see the way Maycomb is Atticus tells Scout how she could “learn a simple trick” to “understand” some ones “point of view” to see how some other “folk” lead their lives (Lee30).Scout does not understand on how other people’s lives are afflicted by where they come from or how they live. When Atticus tells scout to change in a way so that she may learn a new way to deal with people from different backgrounds. Another example of Atticus’ positive life lesson is when Jem lost his cool over by Mrs. Dubose house and smashed all her camellias with Scout’s baton when he was trying to defend scout’s honor, he would know that will have to “keep his head” even in “far worse things” but sometimes you “have to make the best of things.”(Lee104)When Jem lost his control over someone being Mrs. Dubose offending Scout is childish to react so poorly on someone’s possessions over something that is only one sided. Jem did not make the most mature thing to do by destroying the camellias with Scouts baton that he also broke the camellias with. Both Jem and scout do not know what is possible in the world yet but Atticus tries to teach them positively. Jem and Scout learn about life through their experiences. As a result of segregation, Jem’s mind is being clouded about ethnicity in example mixed children are in “between” the segregation all alone because not “colored folk” or “white folk” are willing to accept them (Lee 161).Jem now knows that in this time people will be judged based on their skin color for what they do or will do. The fact that people are not accepted by other people of the same species is very frustrating and would be very hard to look past. In example Mr. Dolphus-Raymond is a white man that has married a colored woman and have had children, he disguises that with appearing to look drunk but all he does is drink Coca-Cola although “it is not honest” it gives people a wrong impression so that they “never understand” his secret lifestyle (Lee200-201).Although Mr. Dolphus-Raymond has broken the unspoken rule of the two ethnicities he knows he would be in trouble so he hides the fact by giving the look that he is too drunk to be making the right decisions according to the unspoken law. People think differently of Mr. Raymond because his choice of life, many others think his choices are bad but some people like to live differently from other types of lifestyles. Now that the children are growing up they are starting to notice that the world they live in is different that the way they thought it would be. Boo Radley teaches the children to be caring and selfless. For example Jem and Scout find items in the knot hole of the Radley’s tree and when Jem finds Indian pennies he decides he will “keep them” but when “school starts” he and Scout will “go around” to “ask” if they belong to anyone (Lee 35).When they find the lucky pennies Jem does not feel right if he just takes them for himself he wants to find the original owner of the pennies.The pennies are supposed to be good luck if you had them, Jem must of felt guilty for just have been given them without giving back to the person. Furthermore after the events of the attack from Bob Ewell, Scout has Arthur escort her “down the sidewalk”  to look like a “gentleman” so incase Stephanie Crawford saw from her “upstairs window” she would have to end the rumors(Lee 278).Scout is showing that the rumors about Arthur being a monster and other nasty things are wrong. Scout tries to display to the neighborhood how she does not think of all the bad things she and the people of maycomb have said about him in the past. Like secret messages Arthur Radley tries to tell the kids to be more selfless by giving them presents and saving their lives here and there.\n When you do not see how others understand certain things or lose control on your behavior towards some one that made you go beyond the point of snapping instead offer help to those that need to see the other point of view. Either it is a neighbor of a parent both will still try to make you see something important that is needed to change. Seeing that an innocent person try to defend themselves or someone shunned for the way they want to live can show that they are trying to change what the people have become. Today people try to change either how things can be run to make a difference or to change how people run or chose how to live their lives like. How will you change the way you live and how others will also chose.,,,,,\n";
 	public static Color[][] pic;
 
 	public TestMain(){
@@ -18,7 +19,23 @@ public class TestMain /*extends Application*/{
 	public static void main(String [] args){
 //		launch(args);
 		TestMain a = new TestMain();
-        a.algTest();
+		int[] bigNums = {8220,8221,8217,8218};
+		for(int c : bigNums){
+            int nonce = 0;
+            System.out.print(c + " " + (char)(c));
+            while( c > 255 && !(c+nonce < 256)){
+                c -= 255;
+                nonce++;
+                /*if(c+nonce <255){
+                    c += nonce;
+                }*/
+            }
+            System.out.println(c + " " + (char)(c));
+        }
+
+//        a.algTest();
+//        a.charList(TEST_STRING);
+        System.out.println((char)(8220) + "    " + (char) (8221) + "    "  + (char)(8217)+ "    " +(char)(8218));
 //        Crypt c = new Encrypt(TEST_STRING);
 //		regExTest();
 //		aspectTesting();
@@ -39,7 +56,24 @@ public class TestMain /*extends Application*/{
 		pStage.show();
 	}*/
 
-
+    private void charList(String t){
+        final int LIMIT = 20;
+        int count = 0;
+        String [] a = t.split(" ");
+        for(String b : a){
+            char[] c = b.toCharArray();
+            for(char d : c){
+                int hashVal = Character.hashCode(d);
+                int intVal = Character.getNumericValue(d);
+                System.out.printf("%d", hashVal);
+                if(hashVal > 255){
+                    System.out.print("- \n");
+                }else{
+                    System.out.println();
+                }
+            }
+        }
+    }
 
 	public static void setAllTo(){
 		for(int row = 0; row < pic.length; row++){
@@ -106,6 +140,9 @@ public class TestMain /*extends Application*/{
             for (char b : t) {
                 //initializes the array of hash values to put into colors
                 int hashVal = Character.hashCode(b);
+                if(hashVal > 255){
+
+                }
                 color.add(hashVal);
                 if(b == t[t.length-1]){
                     color.add(32);

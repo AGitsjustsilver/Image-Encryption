@@ -4,6 +4,7 @@ import com.ag.brain.IEUtils;
 import com.ag.brain.crypt.Crypt;
 import com.ag.brain.crypt.Encrypt;
 
+import com.ag.brain.ui.UserInterface;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -53,6 +54,7 @@ public class TextInput extends GridPane{
 				if((fileName.getText().isEmpty())||(input.getText().isEmpty())){
 					warn.setText("Missing fields.");
 				}else{
+                    UserInterface.setBotNode(IEUtils.imOut);
 					IEUtils.setFileName(fileName.getText());
 					IEUtils.setFileType(fileExtention.getValue());
 					String mess = input.getText();
