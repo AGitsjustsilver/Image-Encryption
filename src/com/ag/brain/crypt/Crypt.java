@@ -50,9 +50,9 @@ public abstract class Crypt{
 
 	public Crypt(File i) throws FileNotFoundException{
 		try{
-			inImg = new Image(new FileInputStream(i));
-			pR = inImg.getPixelReader();
-			inMess = "";
+            inImg = new Image(new FileInputStream(i));
+            pR = inImg.getPixelReader();
+            inMess = "";
 			w = inImg.getWidth();
 			l = inImg.getHeight();
 			pic = new Color[w.intValue()][l.intValue()];

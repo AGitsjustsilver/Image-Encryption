@@ -68,7 +68,7 @@ public class FileInput extends GridPane{
 				try{
 					Scanner s = new Scanner(f);
 					while(s.hasNext()){
-						mess += s.next();
+						mess += s.next() + " ";
 					}
 				}catch (FileNotFoundException e){
 					e.printStackTrace();
