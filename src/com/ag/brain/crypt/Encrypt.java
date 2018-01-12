@@ -122,7 +122,7 @@ public class Encrypt extends Crypt{
     private void create(){
 		int[] t = getMetaShift();
 		pic[0][0] = Color.rgb(t[0], t[1], t[2], .5);
-		pic[0][1] = Color.rgb(t[3], t[4], t[5], .5);
+		pic[0][1] = Color.rgb(t[3], t[4], t[5], .55);
 		int row = 0, col = 2;
         ArrayList<Integer> color = new ArrayList<>();
 		String[] words = inMess.split(" ");
@@ -144,11 +144,6 @@ public class Encrypt extends Crypt{
                             hashVal += nonce;
                         }
                     }
-                }
-            }
-            if((s.equals(words[words.length-1]))&&(color.size()%3 != 0)){
-			    while (color.size()%3 != 0){
-			        color.add(32);
                 }
             }
             while(color.size() >= 3){

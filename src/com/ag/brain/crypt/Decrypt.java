@@ -45,9 +45,21 @@ public class Decrypt extends Crypt{
                 char last_2 = colorString.charAt(colorString.length()-2);
                 if(last_1 == '0' && last_2 == '8'){
                     String hexColor = colorString.substring(2, 8);
-                    metaShift[(!sec ? 0 : 3)] = hexToInt(hexColor.substring(0,2));
-                    metaShift[(!sec ? 1 : 4)] = hexToInt(hexColor.substring(2,4));
-                    metaShift[(!sec ? 2 : 5)] = hexToInt(hexColor.substring(4));
+                    metaShift[0] = hexToInt(hexColor.substring(0,2));
+                    metaShift[1] = hexToInt(hexColor.substring(2,4));
+                    metaShift[2] = hexToInt(hexColor.substring(4));
+                    sec = true;
+                }
+            }
+            for (int col = 0; col < pic[row].length; col++){
+                String colorString = pic[row][col].toString();
+                char last_1 = colorString.charAt(colorString.length()-1);
+                char last_2 = colorString.charAt(colorString.length()-2);
+                if(last_1 == 'c' && last_2 == '8'){
+                    String hexColor = colorString.substring(2, 8);
+                    metaShift[3] = hexToInt(hexColor.substring(0,2));
+                    metaShift[4] = hexToInt(hexColor.substring(2,4));
+                    metaShift[5] = hexToInt(hexColor.substring(4));
                     sec = true;
                 }
             }

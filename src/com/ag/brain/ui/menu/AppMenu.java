@@ -17,15 +17,12 @@ public class AppMenu extends MenuBar{
 	public AppMenu(Stage s){
 		this.setWidth(IEUtils.WIDTH);
 		Menu file = new Menu("File");
-			MenuItem settings = new MenuItem("Settings");
-
-
 			MenuItem exit = new MenuItem("Exit");
 			exit.setOnAction(event -> {
 				s.close();
 			});
 
-		file.getItems().addAll(settings, exit);
+		file.getItems().addAll(exit);
 
 		Menu in = new Menu("Input");
 			MenuItem text = new MenuItem("Text");
