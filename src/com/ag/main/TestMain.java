@@ -18,7 +18,7 @@ public class TestMain /*extends Application*/{
 
 	public static void main(String [] args){
 //		launch(args);
-		TestMain a = new TestMain();
+/*		TestMain a = new TestMain();
 		int[] bigNums = {8220,8221,8217,8218};
 		for(int c : bigNums){
             int nonce = 0;
@@ -26,20 +26,28 @@ public class TestMain /*extends Application*/{
             while( c > 255 && !(c+nonce < 256)){
                 c -= 255;
                 nonce++;
-                /*if(c+nonce <255){
+                *//*if(c+nonce <255){
                     c += nonce;
-                }*/
+                }*//*
             }
             System.out.println(c + " " + (char)(c));
-        }
+        }*/
 
 //        a.algTest();
 //        a.charList(TEST_STRING);
-        System.out.println((char)(8220) + "    " + (char) (8221) + "    "  + (char)(8217)+ "    " +(char)(8218));
+//        System.out.println((char)(8220) + "    " + (char) (8221) + "    "  + (char)(8217)+ "    " +(char)(8218));
 //        Crypt c = new Encrypt(TEST_STRING);
 //		regExTest();
 //		aspectTesting();
-
+        for(int i  = 0; i < 256; i++) {
+            double red = (i / 255.0);
+            float red1 = ((float) red);
+            int red3 = ((int) Math.round(red1 * 255.0));
+            System.out.printf("%02x\t", red3);
+            System.out.println(red + " \t" + red1 + " \t" + red3);
+        }
+        System.out.println(((float) .5));
+        System.out.println(((int) Math.round(55.9999992)));
 //        System.out.println("a has the hash code of " + Character.hashCode('a') + ".\n" + "a also has the hashcode of " + (int)'a' +". \n" + "but 97 is the character " + (char)97);
 	}
 

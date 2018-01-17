@@ -37,7 +37,6 @@ public class Decrypt extends Crypt{
 	}
 
     private void grabMeta(){
-	    boolean sec = false;
 	    for (int row = 0; row < pic.length; row++){
 	        for (int col = 0; col < pic[row].length; col++){
 	            String colorString = pic[row][col].toString();
@@ -48,7 +47,6 @@ public class Decrypt extends Crypt{
                     metaShift[0] = hexToInt(hexColor.substring(0,2));
                     metaShift[1] = hexToInt(hexColor.substring(2,4));
                     metaShift[2] = hexToInt(hexColor.substring(4));
-                    sec = true;
                 }
             }
             for (int col = 0; col < pic[row].length; col++){
@@ -60,7 +58,6 @@ public class Decrypt extends Crypt{
                     metaShift[3] = hexToInt(hexColor.substring(0,2));
                     metaShift[4] = hexToInt(hexColor.substring(2,4));
                     metaShift[5] = hexToInt(hexColor.substring(4));
-                    sec = true;
                 }
             }
         }
