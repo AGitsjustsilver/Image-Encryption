@@ -46,8 +46,14 @@ public class TestMain /*extends Application*/{
             System.out.printf("%02x\t", red3);
             System.out.println(red + " \t" + red1 + " \t" + red3);
         }
-        System.out.println(((float) .5));
-        System.out.println(((int) Math.round(55.9999992)));
+        System.out.println(Color.rgb(0,0,0,.555).toString());
+        System.out.println(Color.rgb(0,0,0,.945).toString());
+        int argb = 55;
+        int a = argb >>> 24;
+        int r = (argb >> 16) & 0xff;
+        int g = (argb >>  8) & 0xff;
+        int b = (argb      ) & 0xff;
+        System.out.printf("%d %d %d %d",a,r,g,b);
 //        System.out.println("a has the hash code of " + Character.hashCode('a') + ".\n" + "a also has the hashcode of " + (int)'a' +". \n" + "but 97 is the character " + (char)97);
 	}
 
