@@ -1,4 +1,4 @@
-# Image-Encryption
+# Image-Encryption **ARCHIVED**
 A java application that encrypts a message into a new image
 
 ## build commands
